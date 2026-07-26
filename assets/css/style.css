@@ -307,8 +307,7 @@ header.hero {
 	inset: 0;
 	z-index: 0;
 	pointer-events: none;
-	background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-		linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+	background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
 	background-size: 56px 56px;
 	-webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 35%, #000 20%, transparent 80%);
 	mask-image: radial-gradient(ellipse 80% 70% at 50% 35%, #000 20%, transparent 80%);
@@ -429,8 +428,7 @@ h1.name .ch.up {
 	align-items: center;
 	gap: 9px;
 	border: 1px solid transparent;
-	transition: transform 0.12s var(--ease), box-shadow 0.25s, background 0.25s, border-color 0.25s,
-		color 0.25s;
+	transition: transform 0.12s var(--ease), box-shadow 0.25s, background 0.25s, border-color 0.25s, color 0.25s;
 	will-change: transform;
 }
 .btn-primary {
@@ -785,11 +783,7 @@ section.blk {
 	inset: 0;
 	opacity: 0;
 	transition: opacity 0.3s;
-	background: radial-gradient(
-		360px circle at var(--mx, 50%) var(--my, 0%),
-		rgba(45, 212, 191, 0.14),
-		transparent 45%
-	);
+	background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 0%), rgba(45, 212, 191, 0.14), transparent 45%);
 	pointer-events: none;
 }
 .card:hover {

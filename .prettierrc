@@ -9,5 +9,19 @@
 	"bracketSpacing": true,
 	"arrowParens": "always",
 	"endOfLine": "lf",
-	"htmlWhitespaceSensitivity": "css"
+	"htmlWhitespaceSensitivity": "css",
+	"overrides": [
+		{
+			"files": "*.html",
+			"options": {
+				"printWidth": 250
+			}
+		},
+		{
+			"files": "*.css",
+			"options": {
+				"printWidth": 200
+			}
+		}
+	]
 }

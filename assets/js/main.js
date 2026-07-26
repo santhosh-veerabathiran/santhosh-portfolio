@@ -2,13 +2,7 @@ class Portfolio {
 	reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 	finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-	words = [
-		'payment engines.',
-		'settlement systems.',
-		'KYC & AML tooling.',
-		'search infrastructure.',
-		'production AI features.',
-	];
+	words = ['payment engines.', 'settlement systems.', 'KYC & AML tooling.', 'search infrastructure.', 'production AI features.'];
 	typedElement;
 	wordIndex = 0;
 	charIndex = 0;
@@ -110,9 +104,7 @@ class Portfolio {
 		const onScroll = () => {
 			navElement.classList.toggle('scrolled', scrollY > 12);
 			const root = document.documentElement;
-			progressBar.style.width = `${
-				(root.scrollTop / (root.scrollHeight - root.clientHeight)) * 100
-			}%`;
+			progressBar.style.width = `${(root.scrollTop / (root.scrollHeight - root.clientHeight)) * 100}%`;
 		};
 
 		onScroll();
@@ -355,10 +347,7 @@ class Portfolio {
 				point.vy *= -1;
 			}
 
-			const distanceToPointer = Math.hypot(
-				point.x - this.pointer.x,
-				point.y - this.pointer.y,
-			);
+			const distanceToPointer = Math.hypot(point.x - this.pointer.x, point.y - this.pointer.y);
 			const near = distanceToPointer < 140;
 
 			context.beginPath();
