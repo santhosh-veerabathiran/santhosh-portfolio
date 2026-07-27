@@ -1,0 +1,44 @@
+{
+	"name": "Violet",
+	"colors": {
+		"bg": "#0a0912",
+		"bg-2": "#100e1b",
+		"card": "#141122",
+		"card-2": "#1b1730",
+		"line": "#221d3a",
+		"line-2": "#342c56",
+		"ink": "#ece9f6",
+		"muted": "#a39cc0",
+		"faint": "#6b6390",
+		"accent": "#a78bfa",
+		"accent-2": "#c4b5fd",
+		"accent-3": "#8b5cf6",
+		"violet": "#f472b6",
+		"glow": "rgba(167, 139, 250, 0.2)"
+	},
+	"palette": {
+		"c-teal": "#2dd4bf",
+		"c-violet": "#a78bfa",
+		"c-blue": "#60a5fa",
+		"c-amber": "#fbbf24",
+		"c-pink": "#f472b6",
+		"c-green": "#34d399",
+		"c-cyan": "#22d3ee",
+		"c-orange": "#fb923c"
+	},
+	"fonts": {
+		"sans": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
+		"mono": "ui-monospace, 'SF Mono', 'SFMono-Regular', Menlo, Consolas, monospace"
+	},
+	"background": {
+		"pattern": "dots",
+		"gridSize": "26px",
+		"animation": "stars",
+		"orbs": true,
+		"aurora": true
+	},
+	"motion": {
+		"speed": 1.3,
+		"hover": "repel"
+	}
+}

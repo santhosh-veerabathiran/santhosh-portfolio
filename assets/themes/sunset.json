@@ -1,0 +1,44 @@
+{
+	"name": "Sunset",
+	"colors": {
+		"bg": "#0f0a08",
+		"bg-2": "#17100c",
+		"card": "#1b120d",
+		"card-2": "#241811",
+		"line": "#2c1d15",
+		"line-2": "#432c1e",
+		"ink": "#f6ece3",
+		"muted": "#c2a892",
+		"faint": "#7f6857",
+		"accent": "#fb923c",
+		"accent-2": "#fdba74",
+		"accent-3": "#f97316",
+		"violet": "#f472b6",
+		"glow": "rgba(251, 146, 60, 0.2)"
+	},
+	"palette": {
+		"c-teal": "#f59e0b",
+		"c-violet": "#f472b6",
+		"c-blue": "#38bdf8",
+		"c-amber": "#fbbf24",
+		"c-pink": "#fb7185",
+		"c-green": "#a3e635",
+		"c-cyan": "#fdba74",
+		"c-orange": "#fb923c"
+	},
+	"fonts": {
+		"sans": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
+		"mono": "ui-monospace, 'SF Mono', 'SFMono-Regular', Menlo, Consolas, monospace"
+	},
+	"background": {
+		"pattern": "grid",
+		"gridSize": "52px",
+		"animation": "network",
+		"orbs": true,
+		"aurora": true
+	},
+	"motion": {
+		"speed": 0.7,
+		"hover": "attract"
+	}
+}

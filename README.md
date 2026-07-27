@@ -1,6 +1,6 @@
 <div align="center">
 
-![Portfolio preview](assets/og-image.png)
+![Portfolio preview](assets/images/og-image.png)
 
 # 🌊 Santhosh Veerabathiran — Portfolio
 
@@ -8,7 +8,7 @@
 
 [![Live Site](https://img.shields.io/badge/Live-santhosh--veerabathiran.github.io-2dd4bf?style=for-the-badge&logo=githubpages&logoColor=white)](https://santhosh-veerabathiran.github.io/santhosh-portfolio/)
 &nbsp;
-[![Résumé](https://img.shields.io/badge/R%C3%A9sum%C3%A9-PDF-0f766e?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](assets/Santhosh_V_Resume.pdf)
+[![Résumé](https://img.shields.io/badge/R%C3%A9sum%C3%A9-PDF-0f766e?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](assets/resumes/Santhosh_V_Resume.pdf)
 
 <br />
 
@@ -32,14 +32,14 @@ animations with **no libraries and no build step**. Just open `index.html`.
 
 ## 🎬 Features
 
--   🌌 **Interactive particle-network canvas** in the hero that reacts to your cursor
--   ⌨️ **Typewriter** headline cycling through focus areas + a staggered **letter reveal** on the name
--   🔢 **Count-up stats** that animate when scrolled into view
--   🪄 **3D-tilt cards** with a cursor-tracking glow, a **magnetic** CTA, and a page **spotlight**
--   🎞️ **Scroll-reveal** sections, an infinite **tech marquee**, and a scroll-progress bar
--   📄 One-click **résumé** download
--   ♿ Fully **`prefers-reduced-motion`** aware and mobile-responsive
--   🔗 **Open Graph / Twitter** card for rich link previews
+- 🌌 **Interactive particle-network canvas** in the hero that reacts to your cursor
+- ⌨️ **Typewriter** headline cycling through focus areas + a staggered **letter reveal** on the name
+- 🔢 **Count-up stats** that animate when scrolled into view
+- 🪄 **3D-tilt cards** with a cursor-tracking glow, a **magnetic** CTA, and a page **spotlight**
+- 🎞️ **Scroll-reveal** sections, an infinite **tech marquee**, and a scroll-progress bar
+- 📄 One-click **résumé** download
+- ♿ Fully **`prefers-reduced-motion`** aware and mobile-responsive
+- 🔗 **Open Graph / Twitter** card for rich link previews
 
 ## 🗂️ Structure
 
@@ -49,8 +49,10 @@ santhosh-portfolio/
 ├── assets/
 │   ├── css/style.css       # all styles
 │   ├── js/main.js          # all interactions (class-based, vanilla JS)
-│   ├── og-image.png        # social-preview card (1200×630)
-│   └── Santhosh_V_Resume.pdf
+│   ├── js/theme.js         # ?theme= loader (class-based, vanilla JS)
+│   ├── themes/*.json       # theme definitions (colors, fonts, background)
+│   ├── images/og-image.png # social-preview card (1200×630)
+│   └── resumes/Santhosh_V_Resume.pdf
 ├── .prettierrc             # formatter config
 └── package.json            # format scripts
 ```
@@ -63,9 +65,26 @@ python3 -m http.server 8000
 # → http://localhost:8000
 ```
 
-## 🎨 Customise
+## 🎨 Themes
 
-Design tokens live at the top of **`assets/css/style.css`** (`--accent`, `--bg`, `--ink`, …).
+Themes are JSON files in **`assets/themes/`**, selected with a `?theme=<name>` query — no UI switcher.
+Each file drives colours, fonts, background pattern, and the animated background (canvas mode, aurora,
+orbs) plus its motion (drift speed and cursor behaviour: `link` · `repel` · `attract` · `none`).
+
+<table>
+  <tr>
+    <td align="center"><b>Marine</b> — default · network + orbs<br /><sub><code>?theme=marine</code></sub></td>
+    <td align="center"><b>Violet</b> — starfield + aurora<br /><sub><code>?theme=violet</code></sub></td>
+  </tr>
+  <tr>
+    <td><img src="assets/images/og-image.png" alt="Marine theme" /></td>
+    <td><img src="assets/images/og-image-violet.png" alt="Violet theme" /></td>
+  </tr>
+</table>
+
+> Themes load over `fetch`, so they need the site served over HTTP (`file://` keeps the default).
+
+Design tokens also live at the top of **`assets/css/style.css`** (`--accent`, `--bg`, `--ink`, …).
 Content sits in the section markup in **`index.html`**.
 
 ## 🧹 Format

@@ -101,7 +101,9 @@ a {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	transition: opacity 0.6s ease, visibility 0.6s ease;
+	transition:
+		opacity 0.6s ease,
+		visibility 0.6s ease;
 }
 .preloader.done {
 	opacity: 0;
@@ -146,7 +148,10 @@ nav.top {
 	inset: 0 0 auto 0;
 	z-index: 50;
 	border-bottom: 1px solid transparent;
-	transition: background 0.3s, border-color 0.3s, backdrop-filter 0.3s;
+	transition:
+		background 0.3s,
+		border-color 0.3s,
+		backdrop-filter 0.3s;
 }
 nav.top.scrolled {
 	background: color-mix(in srgb, var(--bg) 72%, transparent);
@@ -199,7 +204,9 @@ nav.top.scrolled {
 	color: var(--muted);
 	padding: 8px 12px;
 	border-radius: 8px;
-	transition: color 0.2s, background 0.2s;
+	transition:
+		color 0.2s,
+		background 0.2s;
 	position: relative;
 }
 .nav-links a .n {
@@ -230,7 +237,9 @@ nav.top.scrolled {
 	padding: 8px 14px !important;
 	border-radius: 8px;
 	margin-left: 8px;
-	transition: border-color 0.2s, box-shadow 0.2s;
+	transition:
+		border-color 0.2s,
+		box-shadow 0.2s;
 }
 .btn-resume:hover {
 	border-color: var(--accent);
@@ -279,7 +288,7 @@ header.hero {
 	max-height: 520px;
 	top: -8%;
 	right: 4%;
-	background: radial-gradient(circle, rgba(45, 212, 191, 0.35), transparent 68%);
+	background: radial-gradient(circle, color-mix(in srgb, var(--accent) 40%, transparent), transparent 68%);
 	animation: float1 18s ease-in-out infinite alternate;
 }
 .orb.b {
@@ -289,7 +298,7 @@ header.hero {
 	max-height: 420px;
 	bottom: -12%;
 	left: -6%;
-	background: radial-gradient(circle, rgba(124, 156, 240, 0.22), transparent 68%);
+	background: radial-gradient(circle, color-mix(in srgb, var(--violet) 30%, transparent), transparent 68%);
 	animation: float2 22s ease-in-out infinite alternate;
 }
 @keyframes float1 {
@@ -300,6 +309,37 @@ header.hero {
 @keyframes float2 {
 	to {
 		transform: translate(50px, -30px);
+	}
+}
+.aurora {
+	position: absolute;
+	inset: -30%;
+	z-index: 0;
+	display: none;
+	pointer-events: none;
+	opacity: 0.5;
+	filter: blur(80px);
+	background: linear-gradient(
+		120deg,
+		color-mix(in srgb, var(--accent) 55%, transparent),
+		transparent 34%,
+		color-mix(in srgb, var(--violet) 45%, transparent) 58%,
+		transparent 78%,
+		color-mix(in srgb, var(--accent-2) 45%, transparent)
+	);
+	background-size: 220% 220%;
+	animation: aurora 24s ease-in-out infinite alternate;
+	-webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, #000 30%, transparent 85%);
+	mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, #000 30%, transparent 85%);
+}
+@keyframes aurora {
+	0% {
+		background-position: 0% 50%;
+		transform: translateY(0);
+	}
+	100% {
+		background-position: 100% 50%;
+		transform: translateY(-24px);
 	}
 }
 .hero-grid {
@@ -427,7 +467,12 @@ h1.name .ch.up {
 	align-items: center;
 	gap: 9px;
 	border: 1px solid transparent;
-	transition: transform 0.12s var(--ease), box-shadow 0.25s, background 0.25s, border-color 0.25s, color 0.25s;
+	transition:
+		transform 0.12s var(--ease),
+		box-shadow 0.25s,
+		background 0.25s,
+		border-color 0.25s,
+		color 0.25s;
 	will-change: transform;
 }
 .btn-primary {
@@ -462,7 +507,9 @@ h1.name .ch.up {
 	display: inline-flex;
 	align-items: center;
 	gap: 8px;
-	transition: color 0.2s, transform 0.2s;
+	transition:
+		color 0.2s,
+		transform 0.2s;
 }
 .socials a::before {
 	content: '↗';
@@ -670,7 +717,9 @@ section.blk {
 	border-radius: 18px;
 	padding: 1px;
 	background: linear-gradient(140deg, var(--accent), transparent 40%);
-	-webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+	-webkit-mask:
+		linear-gradient(#000 0 0) content-box,
+		linear-gradient(#000 0 0);
 	-webkit-mask-composite: xor;
 	mask-composite: exclude;
 	opacity: 0.5;
@@ -770,7 +819,9 @@ section.blk {
 	padding: 28px;
 	overflow: hidden;
 	transform-style: preserve-3d;
-	transition: border-color 0.3s, background 0.3s;
+	transition:
+		border-color 0.3s,
+		background 0.3s;
 	will-change: transform;
 }
 .card .beam {
@@ -865,7 +916,10 @@ section.blk {
 	border: 1px solid var(--line);
 	border-radius: 9px;
 	padding: 6px 12px;
-	transition: border-color 0.2s, color 0.2s, transform 0.2s;
+	transition:
+		border-color 0.2s,
+		color 0.2s,
+		transform 0.2s;
 }
 .chip:hover {
 	border-color: var(--accent);
@@ -948,7 +1002,9 @@ footer {
 .reveal {
 	opacity: 0;
 	transform: translateY(26px);
-	transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+	transition:
+		opacity 0.8s var(--ease),
+		transform 0.8s var(--ease);
 }
 .reveal.in {
 	opacity: 1;
@@ -1029,6 +1085,7 @@ footer {
 		scroll-behavior: auto;
 	}
 	.orb,
+	.aurora,
 	.marquee .track,
 	.scrollcue .rail::after,
 	.brand .dot,
@@ -1135,7 +1192,10 @@ footer {
 	border: 1px solid var(--line);
 	border-radius: 16px;
 	padding: 20px 22px;
-	transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease;
+	transition:
+		border-color 0.25s ease,
+		transform 0.25s ease,
+		background 0.25s ease;
 }
 .skill-card:hover {
 	border-color: var(--line-2);
@@ -1260,7 +1320,9 @@ footer {
 	border: 1px solid var(--line);
 	border-radius: 18px;
 	padding: 26px;
-	transition: border-color 0.3s ease, background 0.3s ease;
+	transition:
+		border-color 0.3s ease,
+		background 0.3s ease;
 }
 .proj-card::before {
 	content: '';
@@ -1347,7 +1409,9 @@ footer {
 	border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
 	border-radius: 8px;
 	padding: 7px 12px;
-	transition: box-shadow 0.2s, border-color 0.2s;
+	transition:
+		box-shadow 0.2s,
+		border-color 0.2s;
 }
 .proj-links a .ic {
 	width: 15px;
@@ -1578,7 +1642,9 @@ footer {
 	white-space: nowrap;
 	opacity: 0;
 	pointer-events: none;
-	transition: opacity 0.15s ease, transform 0.15s ease;
+	transition:
+		opacity 0.15s ease,
+		transform 0.15s ease;
 }
 .socials a:hover::after {
 	opacity: 1;
@@ -1602,7 +1668,10 @@ footer {
 	border: 1px solid var(--line);
 	border-radius: 14px;
 	padding: 14px 22px;
-	transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+	transition:
+		border-color 0.25s,
+		transform 0.25s,
+		box-shadow 0.25s;
 }
 .cp-card:hover {
 	border-color: var(--accent);
@@ -1642,4 +1711,63 @@ footer {
 }
 .contact-links {
 	margin-top: 22px;
+}
+
+/* ---------- Nav avatar + link icons ---------- */
+.brand {
+	gap: 11px;
+}
+.brand .avatar {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	display: grid;
+	place-items: center;
+	font-weight: 700;
+	font-size: 17px;
+	line-height: 1;
+	color: #04201d;
+	background: linear-gradient(135deg, var(--accent), var(--accent-3));
+	border: 1px solid var(--accent);
+	overflow: hidden;
+	object-fit: cover;
+	transition:
+		box-shadow 0.2s,
+		transform 0.2s;
+}
+.brand:hover .avatar {
+	box-shadow: 0 0 0 3px var(--glow);
+	transform: translateY(-1px);
+}
+.nav-links a {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+}
+.nav-links a .ic {
+	width: 14px;
+	height: 14px;
+}
+
+/* ---------- Theme-driven background hooks ---------- */
+:root {
+	--grid-size: 56px;
+}
+.hero-grid {
+	background-size: var(--grid-size) var(--grid-size);
+}
+:root[data-pattern='dots'] .hero-grid {
+	background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+:root[data-pattern='none'] .hero-grid {
+	display: none;
+}
+:root[data-orbs='off'] .orb {
+	display: none;
+}
+:root[data-aurora='on'] .aurora {
+	display: block;
+}
+:root[data-animation='none'] #net {
+	display: none;
 }

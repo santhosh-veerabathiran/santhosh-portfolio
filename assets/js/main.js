@@ -15,6 +15,22 @@ class Portfolio {
 	width = 0;
 	height = 0;
 	frameId = 0;
+	mode = 'network';
+	dotColor = '#2dd4bf';
+	linkColor = '#5eead4';
+	speed = 1;
+	hover = 'link';
+	hoverRadius = 140;
+	hoverForces = {
+		repel: (point, unitX, unitY, force) => {
+			point.x += unitX * force * 2.4;
+			point.y += unitY * force * 2.4;
+		},
+		attract: (point, unitX, unitY, force) => {
+			point.x -= unitX * force * 1.8;
+			point.y -= unitY * force * 1.8;
+		},
+	};
 
 	employmentStart = new Date(2024, 1, 1);
 	employmentQuit = null;
@@ -308,6 +324,10 @@ class Portfolio {
 		this.canvas = document.getElementById('net');
 		this.context = this.canvas.getContext('2d');
 
+		this.readMode();
+		this.readColors();
+		this.readMotion();
+
 		const heroElement = document.getElementById('home');
 
 		heroElement.addEventListener('pointermove', (event) => {
@@ -328,15 +348,57 @@ class Portfolio {
 		document.addEventListener('visibilitychange', () => {
 			if (document.hidden) {
 				cancelAnimationFrame(this.frameId);
-			} else {
-				this.frameId = requestAnimationFrame(() => {
-					this.drawFrame();
+			} else if (this.mode !== 'none') {
+				this.frameId = requestAnimationFrame((timestamp) => {
+					this.drawFrame(timestamp);
 				});
 			}
 		});
 
+		this.observeTheme();
 		this.resizeCanvas();
 		this.drawFrame();
+	}
+
+	readMode() {
+		this.mode = document.documentElement.getAttribute('data-animation') ?? 'network';
+	}
+
+	readColors() {
+		const styles = getComputedStyle(document.documentElement);
+		this.dotColor = styles.getPropertyValue('--accent').trim() || '#2dd4bf';
+		this.linkColor = styles.getPropertyValue('--accent-2').trim() || '#5eead4';
+	}
+
+	readMotion() {
+		this.speed = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--net-speed')) || 1;
+		this.hover = document.documentElement.getAttribute('data-hover') ?? 'link';
+	}
+
+	applyHover(point, distance) {
+		const force = this.hoverForces[this.hover];
+		if (!force || distance === 0 || distance > this.hoverRadius) {
+			return;
+		}
+
+		const strength = 1 - distance / this.hoverRadius;
+		force(point, (point.x - this.pointer.x) / distance, (point.y - this.pointer.y) / distance, strength);
+	}
+
+	observeTheme() {
+		const observer = new MutationObserver(() => {
+			const wasStopped = this.mode === 'none';
+			this.readMode();
+			this.readColors();
+			this.readMotion();
+			this.resizeCanvas();
+
+			if (wasStopped && this.mode !== 'none') {
+				this.drawFrame();
+			}
+		});
+
+		observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-animation', 'data-active-theme'] });
 	}
 
 	resizeCanvas() {
@@ -356,18 +418,37 @@ class Portfolio {
 				y: Math.random() * this.height,
 				vx: (Math.random() - 0.5) * 0.35,
 				vy: (Math.random() - 0.5) * 0.35,
+				radius: 0.6 + Math.random() * 1.6,
+				phase: Math.random() * 6.283,
 			};
 		});
 	}
 
-	drawFrame() {
+	drawFrame(timestamp = 0) {
+		if (this.mode === 'none') {
+			this.context.clearRect(0, 0, this.width, this.height);
+			return;
+		}
+
+		if (this.mode === 'stars') {
+			this.drawStars(timestamp);
+		} else {
+			this.drawNetwork();
+		}
+
+		this.frameId = requestAnimationFrame((next) => {
+			this.drawFrame(next);
+		});
+	}
+
+	drawNetwork() {
 		const context = this.context;
 		context.clearRect(0, 0, this.width, this.height);
 
 		for (let index = 0; index < this.points.length; index++) {
 			const point = this.points[index];
-			point.x += point.vx;
-			point.y += point.vy;
+			point.x += point.vx * this.speed;
+			point.y += point.vy * this.speed;
 
 			if (point.x < 0 || point.x > this.width) {
 				point.vx *= -1;
@@ -377,11 +458,13 @@ class Portfolio {
 			}
 
 			const distanceToPointer = Math.hypot(point.x - this.pointer.x, point.y - this.pointer.y);
-			const near = distanceToPointer < 140;
+			const near = distanceToPointer < this.hoverRadius;
+			this.applyHover(point, distanceToPointer);
 
 			context.beginPath();
 			context.arc(point.x, point.y, near ? 2.4 : 1.6, 0, 6.283);
-			context.fillStyle = near ? 'rgba(94, 234, 212, 0.9)' : 'rgba(45, 212, 191, 0.45)';
+			context.globalAlpha = near ? 0.9 : 0.45;
+			context.fillStyle = near ? this.linkColor : this.dotColor;
 			context.fill();
 
 			for (let otherIndex = index + 1; otherIndex < this.points.length; otherIndex++) {
@@ -392,24 +475,48 @@ class Portfolio {
 					context.beginPath();
 					context.moveTo(point.x, point.y);
 					context.lineTo(other.x, other.y);
-					context.strokeStyle = `rgba(45, 212, 191, ${0.16 * (1 - distance / 128)})`;
+					context.globalAlpha = 0.16 * (1 - distance / 128);
+					context.strokeStyle = this.dotColor;
 					context.lineWidth = 1;
 					context.stroke();
 				}
 			}
 
-			if (near) {
+			if (near && this.hover === 'link') {
 				context.beginPath();
 				context.moveTo(point.x, point.y);
 				context.lineTo(this.pointer.x, this.pointer.y);
-				context.strokeStyle = `rgba(94, 234, 212, ${0.4 * (1 - distanceToPointer / 140)})`;
+				context.globalAlpha = 0.4 * (1 - distanceToPointer / this.hoverRadius);
+				context.strokeStyle = this.linkColor;
 				context.stroke();
 			}
 		}
 
-		this.frameId = requestAnimationFrame(() => {
-			this.drawFrame();
-		});
+		context.globalAlpha = 1;
+	}
+
+	drawStars(timestamp) {
+		const context = this.context;
+		context.clearRect(0, 0, this.width, this.height);
+
+		for (const point of this.points) {
+			const distanceToPointer = Math.hypot(point.x - this.pointer.x, point.y - this.pointer.y);
+			this.applyHover(point, distanceToPointer);
+
+			point.x = (point.x + point.vx * 0.4 * this.speed + this.width) % this.width;
+			point.y = (point.y + point.vy * 0.4 * this.speed + this.height) % this.height;
+
+			const near = distanceToPointer < 120;
+			const twinkle = 0.5 + 0.5 * Math.sin(timestamp / 900 + point.phase);
+
+			context.beginPath();
+			context.arc(point.x, point.y, point.radius * (near ? 1.9 : 1), 0, 6.283);
+			context.globalAlpha = 0.25 + 0.6 * twinkle;
+			context.fillStyle = near ? this.linkColor : this.dotColor;
+			context.fill();
+		}
+
+		context.globalAlpha = 1;
 	}
 }
 

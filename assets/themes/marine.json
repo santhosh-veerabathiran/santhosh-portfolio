@@ -1,0 +1,44 @@
+{
+	"name": "Marine",
+	"colors": {
+		"bg": "#070b0c",
+		"bg-2": "#0c1315",
+		"card": "#0f1a1d",
+		"card-2": "#132427",
+		"line": "#1a2b2e",
+		"line-2": "#294247",
+		"ink": "#eaf3f2",
+		"muted": "#93a9aa",
+		"faint": "#5f7779",
+		"accent": "#2dd4bf",
+		"accent-2": "#5eead4",
+		"accent-3": "#22b8a6",
+		"violet": "#7c9cf0",
+		"glow": "rgba(45, 212, 191, 0.18)"
+	},
+	"palette": {
+		"c-teal": "#2dd4bf",
+		"c-violet": "#a78bfa",
+		"c-blue": "#60a5fa",
+		"c-amber": "#fbbf24",
+		"c-pink": "#f472b6",
+		"c-green": "#34d399",
+		"c-cyan": "#22d3ee",
+		"c-orange": "#fb923c"
+	},
+	"fonts": {
+		"sans": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
+		"mono": "ui-monospace, 'SF Mono', 'SFMono-Regular', Menlo, Consolas, monospace"
+	},
+	"background": {
+		"pattern": "grid",
+		"gridSize": "56px",
+		"animation": "network",
+		"orbs": true,
+		"aurora": false
+	},
+	"motion": {
+		"speed": 1,
+		"hover": "link"
+	}
+}
