@@ -16,6 +16,9 @@ class Portfolio {
 	height = 0;
 	frameId = 0;
 
+	employmentStart = new Date(2024, 1, 1);
+	employmentQuit = null;
+
 	constructor() {
 		this.setupPreloader();
 		this.setupNameReveal();
@@ -24,6 +27,7 @@ class Portfolio {
 		this.setupReveal();
 		this.setupActiveNav();
 		this.setupStats();
+		this.setupTenure();
 
 		if (this.finePointer && !this.reduceMotion) {
 			this.setupPointerEffects();
@@ -32,6 +36,31 @@ class Portfolio {
 		if (!this.reduceMotion) {
 			this.setupCanvas();
 		}
+	}
+
+	setupTenure() {
+		const element = document.getElementById('tenure');
+		if (!element) {
+			return;
+		}
+
+		const end = this.employmentQuit ?? new Date();
+		let months = (end.getFullYear() - this.employmentStart.getFullYear()) * 12 + (end.getMonth() - this.employmentStart.getMonth());
+		if (end.getDate() < this.employmentStart.getDate()) {
+			months -= 1;
+		}
+		months = Math.max(months, 0);
+
+		const years = Math.floor(months / 12);
+		const remainingMonths = months % 12;
+		const parts = [];
+		if (years > 0) {
+			parts.push(`${years} yr${years === 1 ? '' : 's'}`);
+		}
+		if (remainingMonths > 0) {
+			parts.push(`${remainingMonths} mo${remainingMonths === 1 ? '' : 's'}`);
+		}
+		element.textContent = parts.length ? parts.join(' ') : '0 mos';
 	}
 
 	setupPreloader() {
@@ -171,7 +200,7 @@ class Portfolio {
 			{ threshold: 0.55 },
 		);
 
-		['about', 'work', 'skills', 'contact'].forEach((id) => {
+		['about', 'work', 'projects', 'skills', 'contact'].forEach((id) => {
 			const section = document.getElementById(id);
 			if (section) {
 				sectionObserver.observe(section);

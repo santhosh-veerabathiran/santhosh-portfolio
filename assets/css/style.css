@@ -110,7 +110,7 @@ a {
 .pre-mark {
 	font-family: var(--mono);
 	font-size: 15px;
-	letter-spacing: 0.3em;
+	letter-spacing: 0.08em;
 	color: var(--accent);
 	position: relative;
 }
@@ -321,8 +321,7 @@ header.hero {
 .eyebrow {
 	font-family: var(--mono);
 	font-size: 13px;
-	letter-spacing: 0.18em;
-	text-transform: uppercase;
+	letter-spacing: 0.05em;
 	color: var(--accent);
 	display: inline-flex;
 	align-items: center;
@@ -501,7 +500,6 @@ h1.name .ch.up {
 	font-size: 11.5px;
 	letter-spacing: 0.06em;
 	color: var(--faint);
-	text-transform: uppercase;
 	margin-top: 4px;
 }
 
@@ -513,9 +511,8 @@ h1.name .ch.up {
 	z-index: 2;
 	font-family: var(--mono);
 	font-size: 10.5px;
-	letter-spacing: 0.2em;
+	letter-spacing: 0.08em;
 	color: var(--faint);
-	text-transform: uppercase;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -606,8 +603,7 @@ section.blk {
 .sec-label {
 	font-family: var(--mono);
 	font-size: 13px;
-	letter-spacing: 0.12em;
-	text-transform: uppercase;
+	letter-spacing: 0.04em;
 	color: var(--accent);
 	margin: 0 0 12px;
 	display: flex;
@@ -689,7 +685,6 @@ section.blk {
 	font-family: var(--mono);
 	font-size: 11px;
 	letter-spacing: 0.08em;
-	text-transform: uppercase;
 	color: var(--faint);
 	margin-bottom: 3px;
 }
@@ -797,7 +792,6 @@ section.blk {
 	font-family: var(--mono);
 	font-size: 11px;
 	letter-spacing: 0.09em;
-	text-transform: uppercase;
 	color: var(--accent);
 	display: flex;
 	align-items: center;
@@ -856,7 +850,6 @@ section.blk {
 	font-family: var(--mono);
 	font-size: 11.5px;
 	letter-spacing: 0.08em;
-	text-transform: uppercase;
 	color: var(--faint);
 	margin-bottom: 12px;
 }
@@ -1059,4 +1052,594 @@ footer {
 	#net {
 		display: none;
 	}
+}
+
+/* ---------- Icons ---------- */
+.ic {
+	width: 1em;
+	height: 1em;
+	flex: none;
+	display: inline-block;
+	vertical-align: -0.14em;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 1.8;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+.ic--fill {
+	fill: currentColor;
+	stroke: none;
+}
+.sec-label .ic {
+	width: 1.15em;
+	height: 1.15em;
+	color: var(--accent);
+}
+.card .kicker .ic {
+	width: 1.2em;
+	height: 1.2em;
+	color: var(--accent);
+}
+.facts dt {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+.facts dt .ic {
+	width: 14px;
+	height: 14px;
+	color: var(--accent);
+}
+.socials a::before {
+	content: none !important;
+}
+.socials a .ic,
+.contact-links a .ic {
+	width: 15px;
+	height: 15px;
+}
+.contact-links a {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+}
+.btn .ic {
+	width: 1.05em;
+	height: 1.05em;
+}
+.btn-resume .ic {
+	width: 1.05em;
+	height: 1.05em;
+	vertical-align: -0.16em;
+}
+.totop {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+}
+.totop .ic {
+	width: 14px;
+	height: 14px;
+}
+
+/* ---------- Skill cards ---------- */
+.skill-cards {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: 16px;
+	margin-top: 8px;
+}
+.skill-card {
+	background: var(--card);
+	border: 1px solid var(--line);
+	border-radius: 16px;
+	padding: 20px 22px;
+	transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease;
+}
+.skill-card:hover {
+	border-color: var(--line-2);
+	background: var(--card-2);
+	transform: translateY(-3px);
+}
+.skill-head {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	font-size: 15px;
+	font-weight: 600;
+	color: var(--ink);
+	margin-bottom: 16px;
+}
+.skill-head .ic-wrap {
+	width: 36px;
+	height: 36px;
+	border-radius: 10px;
+	display: grid;
+	place-items: center;
+	flex: none;
+	color: var(--accent);
+	background: color-mix(in srgb, var(--accent) 12%, transparent);
+	border: 1px solid color-mix(in srgb, var(--accent) 26%, transparent);
+}
+.skill-head .ic {
+	width: 18px;
+	height: 18px;
+}
+
+/* ---------- Multi-color accents ---------- */
+:root {
+	--c-teal: #2dd4bf;
+	--c-violet: #a78bfa;
+	--c-blue: #60a5fa;
+	--c-amber: #fbbf24;
+	--c-pink: #f472b6;
+	--c-green: #34d399;
+	--c-cyan: #22d3ee;
+	--c-orange: #fb923c;
+}
+.skill-card:nth-child(1) {
+	--accent: var(--c-teal);
+}
+.skill-card:nth-child(2) {
+	--accent: var(--c-violet);
+}
+.skill-card:nth-child(3) {
+	--accent: var(--c-blue);
+}
+.skill-card:nth-child(4) {
+	--accent: var(--c-amber);
+}
+.skill-card:nth-child(5) {
+	--accent: var(--c-pink);
+}
+.skill-card:nth-child(6) {
+	--accent: var(--c-green);
+}
+.skill-card:nth-child(7) {
+	--accent: var(--c-cyan);
+}
+.skill-card:nth-child(8) {
+	--accent: var(--c-orange);
+}
+.cards .card:nth-child(1) {
+	--accent: var(--c-teal);
+}
+.cards .card:nth-child(2) {
+	--accent: var(--c-violet);
+}
+.cards .card:nth-child(3) {
+	--accent: var(--c-blue);
+}
+.cards .card:nth-child(4) {
+	--accent: var(--c-pink);
+}
+#about .sec-label {
+	--accent: var(--c-teal);
+}
+#work .sec-label {
+	--accent: var(--c-violet);
+}
+#projects .sec-label {
+	--accent: var(--c-pink);
+}
+#skills .sec-label {
+	--accent: var(--c-amber);
+}
+#contact .sec-label {
+	--accent: var(--c-blue);
+}
+.stats .stat:nth-child(1) .num {
+	color: var(--c-teal);
+}
+.stats .stat:nth-child(2) .num {
+	color: var(--c-violet);
+}
+.stats .stat:nth-child(3) .num {
+	color: var(--c-amber);
+}
+.stats .stat .num span {
+	color: inherit;
+}
+/* colored beam for work cards */
+.card .beam {
+	background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 0%), color-mix(in srgb, var(--accent) 15%, transparent), transparent 45%);
+}
+
+/* ---------- Project cards ---------- */
+.proj-cards {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+	gap: 18px;
+	margin-top: 8px;
+}
+.proj-card {
+	position: relative;
+	overflow: hidden;
+	background: var(--card);
+	border: 1px solid var(--line);
+	border-radius: 18px;
+	padding: 26px;
+	transition: border-color 0.3s ease, background 0.3s ease;
+}
+.proj-card::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 3px;
+	width: 100%;
+	background: linear-gradient(90deg, var(--accent), transparent);
+	transform: scaleX(0);
+	transform-origin: left;
+	transition: transform 0.3s ease;
+}
+.proj-card:hover {
+	border-color: var(--line-2);
+	background: var(--card-2);
+}
+.proj-card:hover::before {
+	transform: scaleX(1);
+}
+.proj-card .beam {
+	position: absolute;
+	inset: 0;
+	opacity: 0;
+	transition: opacity 0.3s;
+	background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 0%), color-mix(in srgb, var(--accent) 16%, transparent), transparent 45%);
+	pointer-events: none;
+}
+.proj-card:hover .beam {
+	opacity: 1;
+}
+.proj-top {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	margin-bottom: 14px;
+	position: relative;
+}
+.proj-top .ic-wrap {
+	width: 42px;
+	height: 42px;
+	border-radius: 12px;
+	display: grid;
+	place-items: center;
+	flex: none;
+	color: var(--accent);
+	background: color-mix(in srgb, var(--accent) 13%, transparent);
+	border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+}
+.proj-top .ic {
+	width: 22px;
+	height: 22px;
+}
+.proj-top h4 {
+	margin: 0;
+	font-size: 17px;
+	font-weight: 700;
+	letter-spacing: -0.01em;
+}
+.proj-tag {
+	margin: 3px 0 0;
+	font-family: var(--mono);
+	font-size: 11.5px;
+	letter-spacing: 0.04em;
+	color: var(--faint);
+}
+.proj-desc {
+	color: var(--muted);
+	font-size: 14px;
+	line-height: 1.6;
+	margin: 0 0 14px;
+	position: relative;
+}
+.proj-links {
+	position: relative;
+}
+.proj-links a {
+	display: inline-flex;
+	align-items: center;
+	gap: 7px;
+	font-family: var(--mono);
+	font-size: 12.5px;
+	color: var(--accent);
+	border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+	border-radius: 8px;
+	padding: 7px 12px;
+	transition: box-shadow 0.2s, border-color 0.2s;
+}
+.proj-links a .ic {
+	width: 15px;
+	height: 15px;
+}
+.proj-links a:hover {
+	box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 15%, transparent);
+}
+
+/* ---------- Eyebrow (bigger, bolder) ---------- */
+.eyebrow {
+	font-size: 15px;
+	font-weight: 600;
+}
+
+/* ---------- Work card icon-badge header ---------- */
+.card .card-head {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin-bottom: 16px;
+	position: relative;
+}
+.card .card-head .ic-wrap {
+	width: 38px;
+	height: 38px;
+	border-radius: 10px;
+	display: grid;
+	place-items: center;
+	flex: none;
+	color: var(--accent);
+	background: color-mix(in srgb, var(--accent) 13%, transparent);
+	border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+}
+.card .card-head .ic {
+	width: 19px;
+	height: 19px;
+}
+.card .card-head h4 {
+	margin: 0;
+	font-size: 15.5px;
+	font-weight: 700;
+	letter-spacing: -0.01em;
+	color: var(--ink);
+}
+
+/* ---------- Stat icons ---------- */
+.stat-ic {
+	width: 22px;
+	height: 22px;
+	display: block;
+	margin-bottom: 10px;
+}
+.stats .stat:nth-child(1) .stat-ic {
+	color: var(--c-teal);
+}
+.stats .stat:nth-child(2) .stat-ic {
+	color: var(--c-violet);
+}
+.stats .stat:nth-child(3) .stat-ic {
+	color: var(--c-amber);
+}
+
+/* ---------- Second marquee row ---------- */
+.marquee--reverse .track {
+	animation-direction: reverse;
+}
+.marquee + .marquee {
+	border-top: none;
+}
+
+/* ---------- Marquee item icons ---------- */
+.marquee .item {
+	gap: 9px;
+}
+.marquee .item::after {
+	content: none;
+}
+.marquee .item .ic {
+	width: 16px;
+	height: 16px;
+	flex: none;
+}
+
+/* ---------- Experience role split (intern → engineer) ---------- */
+.roles {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	margin: 12px 0 2px;
+	max-width: 520px;
+}
+.role-sub {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	gap: 12px 16px;
+	flex-wrap: wrap;
+}
+.role-sub .rt {
+	font-size: 14.5px;
+	font-weight: 600;
+	color: var(--ink);
+}
+.role-sub .rw {
+	font-family: var(--mono);
+	font-size: 12px;
+	letter-spacing: 0.03em;
+	color: var(--muted);
+	font-variant-numeric: tabular-nums;
+}
+.job-bar .when strong {
+	color: var(--ink);
+}
+
+/* ---------- Experience role timeline ---------- */
+.timeline {
+	margin: 18px 0 6px;
+}
+.tl-item {
+	position: relative;
+	padding-left: 26px;
+	padding-bottom: 16px;
+}
+.tl-item:last-child {
+	padding-bottom: 0;
+}
+.tl-item::before {
+	content: '';
+	position: absolute;
+	left: 5px;
+	top: 16px;
+	bottom: -1px;
+	width: 2px;
+	background: linear-gradient(var(--accent), var(--line-2));
+}
+.tl-item:last-child::before {
+	display: none;
+}
+.tl-dot {
+	position: absolute;
+	left: 0;
+	top: 3px;
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	border: 2px solid var(--accent);
+	background: var(--bg);
+}
+.tl-item.current .tl-dot {
+	background: var(--accent);
+	box-shadow: 0 0 10px var(--accent);
+}
+.tl-head {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	flex-wrap: wrap;
+}
+.tl-role {
+	font-size: 15px;
+	font-weight: 600;
+	color: var(--ink);
+}
+.tl-item:not(.current) .tl-role {
+	color: var(--muted);
+}
+.tl-date {
+	font-family: var(--mono);
+	font-size: 11.5px;
+	letter-spacing: 0.02em;
+	color: var(--muted);
+	background: var(--bg-2);
+	border: 1px solid var(--line);
+	border-radius: 999px;
+	padding: 3px 10px;
+	font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Hero socials: icon-only ---------- */
+.socials {
+	gap: 22px;
+}
+.socials a {
+	gap: 0;
+}
+.socials a .ic {
+	width: 20px;
+	height: 20px;
+}
+.socials a:hover {
+	transform: translateY(-2px);
+}
+
+/* ---------- Skill chip icons ---------- */
+.chip {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+}
+.chip .ic {
+	width: 13px;
+	height: 13px;
+	flex: none;
+}
+.skill-card .chip .ic {
+	color: var(--accent);
+}
+
+/* ---------- Hero social hover tooltips ---------- */
+.socials a {
+	position: relative;
+}
+.socials a::after {
+	content: attr(aria-label);
+	position: absolute;
+	bottom: calc(100% + 10px);
+	left: 50%;
+	transform: translateX(-50%) translateY(4px);
+	background: var(--card-2);
+	border: 1px solid var(--line-2);
+	color: var(--ink);
+	font-family: var(--mono);
+	font-size: 11px;
+	letter-spacing: 0.02em;
+	padding: 4px 9px;
+	border-radius: 7px;
+	white-space: nowrap;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.socials a:hover::after {
+	opacity: 1;
+	transform: translateX(-50%) translateY(0);
+}
+
+/* ---------- Contact: prominent email + phone ---------- */
+.contact-primary {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 14px;
+	margin: 36px 0 4px;
+}
+.cp-card {
+	display: inline-flex;
+	align-items: center;
+	gap: 14px;
+	text-align: left;
+	background: var(--card);
+	border: 1px solid var(--line);
+	border-radius: 14px;
+	padding: 14px 22px;
+	transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+}
+.cp-card:hover {
+	border-color: var(--accent);
+	transform: translateY(-2px);
+	box-shadow: 0 0 0 3px var(--glow);
+}
+.cp-card .ic-wrap {
+	width: 42px;
+	height: 42px;
+	border-radius: 11px;
+	display: grid;
+	place-items: center;
+	flex: none;
+	color: var(--accent);
+	background: color-mix(in srgb, var(--accent) 13%, transparent);
+	border: 1px solid color-mix(in srgb, var(--accent) 26%, transparent);
+}
+.cp-card .ic {
+	width: 20px;
+	height: 20px;
+}
+.cp-text {
+	display: flex;
+	flex-direction: column;
+	gap: 1px;
+}
+.cp-label {
+	font-family: var(--mono);
+	font-size: 11px;
+	letter-spacing: 0.08em;
+	color: var(--faint);
+}
+.cp-value {
+	font-size: 15.5px;
+	font-weight: 600;
+	color: var(--ink);
+}
+.contact-links {
+	margin-top: 22px;
 }
