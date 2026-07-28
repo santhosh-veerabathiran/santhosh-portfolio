@@ -101,7 +101,9 @@ a {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	transition: opacity 0.6s ease, visibility 0.6s ease;
+	transition:
+		opacity 0.6s ease,
+		visibility 0.6s ease;
 }
 .preloader.done {
 	opacity: 0;
@@ -146,7 +148,10 @@ nav.top {
 	inset: 0 0 auto 0;
 	z-index: 50;
 	border-bottom: 1px solid transparent;
-	transition: background 0.3s, border-color 0.3s, backdrop-filter 0.3s;
+	transition:
+		background 0.3s,
+		border-color 0.3s,
+		backdrop-filter 0.3s;
 }
 nav.top.scrolled {
 	background: color-mix(in srgb, var(--bg) 72%, transparent);
@@ -199,7 +204,9 @@ nav.top.scrolled {
 	color: var(--muted);
 	padding: 8px 12px;
 	border-radius: 8px;
-	transition: color 0.2s, background 0.2s;
+	transition:
+		color 0.2s,
+		background 0.2s;
 	position: relative;
 }
 .nav-links a .n {
@@ -230,7 +237,9 @@ nav.top.scrolled {
 	padding: 8px 14px !important;
 	border-radius: 8px;
 	margin-left: 8px;
-	transition: border-color 0.2s, box-shadow 0.2s;
+	transition:
+		border-color 0.2s,
+		box-shadow 0.2s;
 }
 .btn-resume:hover {
 	border-color: var(--accent);
@@ -458,7 +467,12 @@ h1.name .ch.up {
 	align-items: center;
 	gap: 9px;
 	border: 1px solid transparent;
-	transition: transform 0.12s var(--ease), box-shadow 0.25s, background 0.25s, border-color 0.25s, color 0.25s;
+	transition:
+		transform 0.12s var(--ease),
+		box-shadow 0.25s,
+		background 0.25s,
+		border-color 0.25s,
+		color 0.25s;
 	will-change: transform;
 }
 .btn-primary {
@@ -493,7 +507,9 @@ h1.name .ch.up {
 	display: inline-flex;
 	align-items: center;
 	gap: 8px;
-	transition: color 0.2s, transform 0.2s;
+	transition:
+		color 0.2s,
+		transform 0.2s;
 }
 .socials a::before {
 	content: '↗';
@@ -712,7 +728,9 @@ section.blk {
 	border-radius: 18px;
 	padding: 1px;
 	background: linear-gradient(140deg, var(--accent), transparent 40%);
-	-webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+	-webkit-mask:
+		linear-gradient(#000 0 0) content-box,
+		linear-gradient(#000 0 0);
 	-webkit-mask-composite: xor;
 	mask-composite: exclude;
 	opacity: 0.5;
@@ -812,7 +830,9 @@ section.blk {
 	padding: 28px;
 	overflow: hidden;
 	transform-style: preserve-3d;
-	transition: border-color 0.3s, background 0.3s;
+	transition:
+		border-color 0.3s,
+		background 0.3s;
 	will-change: transform;
 }
 .card .beam {
@@ -907,7 +927,10 @@ section.blk {
 	border: 1px solid var(--line);
 	border-radius: 9px;
 	padding: 6px 12px;
-	transition: border-color 0.2s, color 0.2s, transform 0.2s;
+	transition:
+		border-color 0.2s,
+		color 0.2s,
+		transform 0.2s;
 }
 .chip:hover {
 	border-color: var(--accent);
@@ -990,7 +1013,9 @@ footer {
 .reveal {
 	opacity: 0;
 	transform: translateY(26px);
-	transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+	transition:
+		opacity 0.8s var(--ease),
+		transform 0.8s var(--ease);
 }
 .reveal.in {
 	opacity: 1;
@@ -1178,7 +1203,10 @@ footer {
 	border: 1px solid var(--line);
 	border-radius: 16px;
 	padding: 20px 22px;
-	transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease;
+	transition:
+		border-color 0.25s ease,
+		transform 0.25s ease,
+		background 0.25s ease;
 }
 .skill-card:hover {
 	border-color: var(--line-2);
@@ -1303,7 +1331,9 @@ footer {
 	border: 1px solid var(--line);
 	border-radius: 18px;
 	padding: 26px;
-	transition: border-color 0.3s ease, background 0.3s ease;
+	transition:
+		border-color 0.3s ease,
+		background 0.3s ease;
 }
 .proj-card::before {
 	content: '';
@@ -1390,7 +1420,9 @@ footer {
 	border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
 	border-radius: 8px;
 	padding: 7px 12px;
-	transition: box-shadow 0.2s, border-color 0.2s;
+	transition:
+		box-shadow 0.2s,
+		border-color 0.2s;
 }
 .proj-links a .ic {
 	width: 15px;
@@ -1621,7 +1653,9 @@ footer {
 	white-space: nowrap;
 	opacity: 0;
 	pointer-events: none;
-	transition: opacity 0.15s ease, transform 0.15s ease;
+	transition:
+		opacity 0.15s ease,
+		transform 0.15s ease;
 }
 .socials a:hover::after {
 	opacity: 1;
@@ -1645,7 +1679,10 @@ footer {
 	border: 1px solid var(--line);
 	border-radius: 14px;
 	padding: 14px 22px;
-	transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+	transition:
+		border-color 0.25s,
+		transform 0.25s,
+		box-shadow 0.25s;
 }
 .cp-card:hover {
 	border-color: var(--accent);
@@ -1705,7 +1742,9 @@ footer {
 	border: 1px solid var(--accent);
 	overflow: hidden;
 	object-fit: cover;
-	transition: box-shadow 0.2s, transform 0.2s;
+	transition:
+		box-shadow 0.2s,
+		transform 0.2s;
 }
 .brand:hover .avatar {
 	box-shadow: 0 0 0 3px var(--glow);

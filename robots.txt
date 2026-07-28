@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://santhosh-veerabathiran-portfolio.pages.dev/sitemap.xml
