@@ -7,3 +7,5 @@ package.json
 package-lock.json
 README.md
 .assetsignore
+wrangler.jsonc
+wrangler.toml
