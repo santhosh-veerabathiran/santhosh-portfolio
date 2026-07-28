@@ -6,7 +6,7 @@
 
 **Full-Stack Software Engineer · Fintech &amp; Payments**
 
-[![Live Site](https://img.shields.io/badge/Live-santhosh--veerabathiran.github.io-2dd4bf?style=for-the-badge&logo=githubpages&logoColor=white)](https://santhosh-veerabathiran.github.io/santhosh-portfolio/)
+[![Live Site](https://img.shields.io/badge/Live-santhosh--veerabathiran--portfolio.pages.dev-2dd4bf?style=for-the-badge&logo=cloudflarepages&logoColor=white)](https://santhosh-veerabathiran-portfolio.pages.dev/)
 &nbsp;
 [![Résumé](https://img.shields.io/badge/R%C3%A9sum%C3%A9-PDF-0f766e?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](assets/resumes/Santhosh_V_Resume.pdf)
 
@@ -28,7 +28,7 @@
 A hand-built, single-page developer portfolio — dark theme, teal accent, and a fully custom set of
 animations with **no libraries and no build step**. Just open `index.html`.
 
-> 🔗 **Live:** https://santhosh-veerabathiran.github.io/santhosh-portfolio/
+> 🔗 **Live:** https://santhosh-veerabathiran-portfolio.pages.dev/
 
 ## 🎬 Features
 
@@ -98,8 +98,8 @@ npm run format:check   # verify
 
 ## 🌐 Deploy
 
-Static site — host the folder anywhere. This one runs on **GitHub Pages** (`main` / root),
-auto-rebuilding on every push.
+Static site — host the folder anywhere. This one runs on **Cloudflare Pages**, Git-connected to
+`main` and auto-deploying on every push. Security headers ship via `_headers`.
 
 ## 📬 Contact
 
