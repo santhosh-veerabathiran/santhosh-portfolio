@@ -1782,3 +1782,41 @@ footer {
 :root[data-animation='none'] #net {
 	display: none;
 }
+
+/* image-backed themes (Crimson, Ember) — additive, default themes never set --bg-image */
+.theme-bg {
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: -15%;
+	height: 130%;
+	z-index: -2;
+	display: none;
+	background-image: var(--bg-image);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	will-change: transform;
+	pointer-events: none;
+}
+:root[data-bg='image'] {
+	background: var(--bg);
+}
+:root[data-bg='image'] body {
+	background: transparent;
+}
+:root[data-bg='image'] .theme-bg {
+	display: block;
+}
+:root[data-active-theme='crimson'] h1.name .ch {
+	background: linear-gradient(180deg, #ffffff 0%, #ff8a8a 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+:root[data-active-theme='ember'] h1.name .ch {
+	background: linear-gradient(180deg, #ffffff 0%, #f4c76b 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}

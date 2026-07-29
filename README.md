@@ -104,7 +104,7 @@ Static site — host the folder anywhere. This one runs on **Cloudflare Pages**,
 ## 📬 Contact
 
 [![Email](https://img.shields.io/badge/Email-santhosh20020923@gmail.com-2dd4bf?style=flat-square&logo=gmail&logoColor=white)](mailto:santhosh20020923@gmail.com)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-santhosh--v-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/santhosh-v-662006286)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-santhosh--veerabathiran-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/santhosh-veerabathiran)
 [![GitHub](https://img.shields.io/badge/GitHub-santhosh--veerabathiran-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/santhosh-veerabathiran)
 
 <div align="center"><sub>© 2026 Santhosh Veerabathiran</sub></div>

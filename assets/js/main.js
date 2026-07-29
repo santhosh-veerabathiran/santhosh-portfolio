@@ -31,6 +31,21 @@ class Portfolio {
 			point.y -= unitY * force * 1.8;
 		},
 	};
+	renderers = {
+		network: () => {
+			this.drawNetwork();
+		},
+		stars: (timestamp) => {
+			this.drawStars(timestamp);
+		},
+		embers: (timestamp) => {
+			this.drawEmbers(timestamp);
+		},
+		petals: (timestamp) => {
+			this.drawPetals(timestamp);
+		},
+	};
+	parallaxTicking = false;
 
 	employmentStart = new Date(2024, 1, 1);
 	employmentQuit = null;
@@ -44,6 +59,7 @@ class Portfolio {
 		this.setupActiveNav();
 		this.setupStats();
 		this.setupTenure();
+		this.setupParallax();
 
 		if (this.finePointer && !this.reduceMotion) {
 			this.setupPointerEffects();
@@ -430,11 +446,8 @@ class Portfolio {
 			return;
 		}
 
-		if (this.mode === 'stars') {
-			this.drawStars(timestamp);
-		} else {
-			this.drawNetwork();
-		}
+		const render = this.renderers[this.mode] ?? this.renderers.network;
+		render(timestamp);
 
 		this.frameId = requestAnimationFrame((next) => {
 			this.drawFrame(next);
@@ -517,6 +530,93 @@ class Portfolio {
 		}
 
 		context.globalAlpha = 1;
+	}
+
+	drawEmbers(timestamp) {
+		const context = this.context;
+		context.clearRect(0, 0, this.width, this.height);
+		context.shadowColor = this.dotColor;
+
+		for (const point of this.points) {
+			const distanceToPointer = Math.hypot(point.x - this.pointer.x, point.y - this.pointer.y);
+			this.applyHover(point, distanceToPointer);
+
+			point.y -= (0.3 + point.radius * 0.4) * this.speed;
+			point.x += Math.sin(timestamp / 600 + point.phase) * 0.3;
+			if (point.y < -6) {
+				point.y = this.height + 6;
+				point.x = Math.random() * this.width;
+			}
+
+			const flicker = 0.35 + 0.65 * Math.abs(Math.sin(timestamp / 300 + point.phase));
+			context.globalAlpha = flicker;
+			context.shadowBlur = 8;
+			context.fillStyle = point.phase > 3.14 ? this.linkColor : this.dotColor;
+			context.beginPath();
+			context.arc(point.x, point.y, point.radius * 1.25, 0, 6.283);
+			context.fill();
+		}
+
+		context.shadowBlur = 0;
+		context.globalAlpha = 1;
+	}
+
+	drawPetals(timestamp) {
+		const context = this.context;
+		context.clearRect(0, 0, this.width, this.height);
+
+		for (const point of this.points) {
+			const distanceToPointer = Math.hypot(point.x - this.pointer.x, point.y - this.pointer.y);
+			this.applyHover(point, distanceToPointer);
+
+			const sway = Math.sin(timestamp / 700 + point.phase) * 0.6;
+			point.x += (sway + point.vx) * this.speed;
+			point.y += (0.4 + point.radius * 0.32) * this.speed;
+			if (point.y > this.height + 10) {
+				point.y = -10;
+				point.x = Math.random() * this.width;
+			}
+
+			context.save();
+			context.translate(point.x, point.y);
+			context.rotate(timestamp / 900 + point.phase);
+			context.globalAlpha = 0.4 + 0.3 * (0.5 + 0.5 * Math.sin(timestamp / 800 + point.phase));
+			context.fillStyle = point.phase > 3.14 ? this.linkColor : this.dotColor;
+			context.beginPath();
+			context.ellipse(0, 0, point.radius * 1.1, point.radius * 2.4, 0, 0, 6.283);
+			context.fill();
+			context.restore();
+		}
+
+		context.globalAlpha = 1;
+	}
+
+	setupParallax() {
+		const layer = document.querySelector('.theme-bg');
+		if (!layer || this.reduceMotion) {
+			return;
+		}
+
+		const update = () => {
+			const max = Math.max(document.documentElement.scrollHeight - innerHeight, 1);
+			const progress = Math.min(scrollY / max, 1);
+			layer.style.transform = `translate3d(0, ${progress * -110}px, 0) scale(1.08)`;
+			this.parallaxTicking = false;
+		};
+
+		addEventListener(
+			'scroll',
+			() => {
+				if (this.parallaxTicking) {
+					return;
+				}
+				this.parallaxTicking = true;
+				requestAnimationFrame(update);
+			},
+			{ passive: true },
+		);
+
+		update();
 	}
 }
 

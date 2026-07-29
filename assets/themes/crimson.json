@@ -1,0 +1,45 @@
+{
+	"name": "Crimson",
+	"colors": {
+		"bg": "#0a0304",
+		"bg-2": "#140406",
+		"card": "#180507",
+		"card-2": "#210a0d",
+		"line": "#2c0e12",
+		"line-2": "#48151b",
+		"ink": "#f5e7e7",
+		"muted": "#cb9a9a",
+		"faint": "#8c5f61",
+		"accent": "#e11d2b",
+		"accent-2": "#ff5a5f",
+		"accent-3": "#b3141f",
+		"violet": "#ff8a8a",
+		"glow": "rgba(225, 29, 43, 0.25)"
+	},
+	"palette": {
+		"c-teal": "#e11d2b",
+		"c-violet": "#ff5a5f",
+		"c-blue": "#b3141f",
+		"c-amber": "#ff7a4d",
+		"c-pink": "#ff5a5f",
+		"c-green": "#e11d2b",
+		"c-cyan": "#ff8a8a",
+		"c-orange": "#ff6a3d"
+	},
+	"fonts": {
+		"sans": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
+		"mono": "ui-monospace, 'SF Mono', 'SFMono-Regular', Menlo, Consolas, monospace"
+	},
+	"background": {
+		"pattern": "dots",
+		"gridSize": "30px",
+		"animation": "petals",
+		"orbs": true,
+		"aurora": true,
+		"image": "linear-gradient(rgba(20, 9, 11, 0.74), rgba(16, 7, 9, 0.84)), radial-gradient(900px 520px at 82% 18%, rgba(225, 29, 43, 0.2), transparent 60%), url('assets/themes/img/crimson.svg')"
+	},
+	"motion": {
+		"speed": 1,
+		"hover": "repel"
+	}
+}

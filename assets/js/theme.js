@@ -36,6 +36,10 @@ class Theme {
 		if (background.gridSize) {
 			this.root.style.setProperty('--grid-size', background.gridSize);
 		}
+		if (background.image) {
+			this.root.style.setProperty('--bg-image', this.resolveUrls(background.image));
+			this.root.setAttribute('data-bg', 'image');
+		}
 
 		const motion = theme.motion ?? {};
 		this.root.style.setProperty('--net-speed', motion.speed ?? 1);
@@ -54,6 +58,15 @@ class Theme {
 
 		Object.keys(group).forEach((key) => {
 			this.root.style.setProperty(`--${key}`, group[key]);
+		});
+	}
+
+	resolveUrls(value) {
+		return value.replace(/url\((['"]?)([^'")]+)\1\)/g, (match, quote, path) => {
+			if (/^(https?:|data:|\/)/.test(path)) {
+				return match;
+			}
+			return `url("${new URL(path, location.href).href}")`;
 		});
 	}
 }

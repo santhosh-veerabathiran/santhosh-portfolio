@@ -1,0 +1,45 @@
+{
+	"name": "Ember",
+	"colors": {
+		"bg": "#06080a",
+		"bg-2": "#0b0f12",
+		"card": "#0e1519",
+		"card-2": "#141c22",
+		"line": "#1f272d",
+		"line-2": "#313c44",
+		"ink": "#eef2f4",
+		"muted": "#a7b4bb",
+		"faint": "#6e7c84",
+		"accent": "#e6a23c",
+		"accent-2": "#f4c76b",
+		"accent-3": "#c9801f",
+		"violet": "#7fb2d9",
+		"glow": "rgba(230, 162, 60, 0.22)"
+	},
+	"palette": {
+		"c-teal": "#e6a23c",
+		"c-violet": "#7fb2d9",
+		"c-blue": "#7fb2d9",
+		"c-amber": "#f4c76b",
+		"c-pink": "#e6a23c",
+		"c-green": "#c9801f",
+		"c-cyan": "#9ec9e6",
+		"c-orange": "#e6772a"
+	},
+	"fonts": {
+		"sans": "'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif",
+		"mono": "ui-monospace, 'SF Mono', 'SFMono-Regular', Menlo, Consolas, monospace"
+	},
+	"background": {
+		"pattern": "none",
+		"gridSize": "40px",
+		"animation": "embers",
+		"orbs": true,
+		"aurora": true,
+		"image": "linear-gradient(rgba(15, 19, 23, 0.72), rgba(11, 14, 17, 0.84)), radial-gradient(1000px 600px at 50% 118%, rgba(230, 120, 30, 0.22), transparent 60%), url('assets/themes/img/ember.svg')"
+	},
+	"motion": {
+		"speed": 0.8,
+		"hover": "attract"
+	}
+}
