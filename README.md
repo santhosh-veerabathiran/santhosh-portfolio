@@ -8,7 +8,7 @@
 
 [![Live Site](https://img.shields.io/badge/Live-santhosh--veerabathiran--portfolio.pages.dev-2dd4bf?style=for-the-badge&logo=cloudflarepages&logoColor=white)](https://santhosh-veerabathiran-portfolio.pages.dev/)
 &nbsp;
-[![Résumé](https://img.shields.io/badge/R%C3%A9sum%C3%A9-PDF-0f766e?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](assets/resumes/Santhosh_V_Resume.pdf)
+[![Résumé](https://img.shields.io/badge/R%C3%A9sum%C3%A9-PDF-0f766e?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](assets/resumes/santhosh-resume.pdf)
 
 <br />
 
@@ -52,7 +52,7 @@ santhosh-portfolio/
 │   ├── js/theme.js         # ?theme= loader (class-based, vanilla JS)
 │   ├── themes/*.json       # theme definitions (colors, fonts, background)
 │   ├── images/og-image.png # social-preview card (1200×630)
-│   └── resumes/Santhosh_V_Resume.pdf
+│   └── resumes/santhosh-resume.pdf
 ├── .prettierrc             # formatter config
 └── package.json            # format scripts
 ```
