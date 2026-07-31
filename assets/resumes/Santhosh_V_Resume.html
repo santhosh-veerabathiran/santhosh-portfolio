@@ -1,0 +1,677 @@
+<!doctype html>
+<html data-theme="light" lang="en">
+	<title>Santhosh V — Resume</title>
+	<style>
+		:root {
+			--paper: #fbfcfc;
+			--raise: #ffffff;
+			--ink: #14202a;
+			--muted: #566870;
+			--faint: #7d8d93;
+			--accent: #0a5f5c;
+			--accent-ink: #084c49;
+			--chip: #e4efee;
+			--chip-ink: #0a5450;
+			--hair: #d9e2e1;
+			--hair-strong: #b9c7c6;
+			--sel: #cfe6e4;
+			--serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+			--sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+			--mono: ui-monospace, 'SF Mono', 'SFMono-Regular', Menlo, Consolas, monospace;
+		}
+		@media (prefers-color-scheme: dark) {
+			:root {
+				--paper: #0d1416;
+				--raise: #121b1d;
+				--ink: #e8eeee;
+				--muted: #9fb0b3;
+				--faint: #7f9295;
+				--accent: #54b8bd;
+				--accent-ink: #74cace;
+				--chip: #143432;
+				--chip-ink: #8fd5d6;
+				--hair: #223130;
+				--hair-strong: #2f4241;
+				--sel: #1c4a47;
+			}
+		}
+		:root[data-theme='light'] {
+			--paper: #fbfcfc;
+			--raise: #ffffff;
+			--ink: #14202a;
+			--muted: #566870;
+			--faint: #7d8d93;
+			--accent: #0a5f5c;
+			--accent-ink: #084c49;
+			--chip: #e4efee;
+			--chip-ink: #0a5450;
+			--hair: #d9e2e1;
+			--hair-strong: #b9c7c6;
+			--sel: #cfe6e4;
+		}
+		:root[data-theme='dark'] {
+			--paper: #0d1416;
+			--raise: #121b1d;
+			--ink: #e8eeee;
+			--muted: #9fb0b3;
+			--faint: #7f9295;
+			--accent: #54b8bd;
+			--accent-ink: #74cace;
+			--chip: #143432;
+			--chip-ink: #8fd5d6;
+			--hair: #223130;
+			--hair-strong: #2f4241;
+			--sel: #1c4a47;
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+		::selection {
+			background: var(--sel);
+		}
+		html {
+			-webkit-text-size-adjust: 100%;
+		}
+		body {
+			margin: 0;
+			background: var(--paper);
+			color: var(--ink);
+			font-family: var(--sans);
+			font-size: 14.5px;
+			line-height: 1.46;
+			-webkit-font-smoothing: antialiased;
+		}
+		.sheet {
+			max-width: 830px;
+			margin: 0 auto;
+			padding: clamp(26px, 5vw, 52px) clamp(20px, 5vw, 56px) 48px;
+		}
+
+		header.masthead {
+			border-bottom: 2px solid var(--accent);
+			padding-bottom: 14px;
+		}
+		.name {
+			font-family: var(--serif);
+			font-weight: 600;
+			font-size: clamp(30px, 5.5vw, 40px);
+			line-height: 1.02;
+			letter-spacing: -0.01em;
+			margin: 0;
+			text-wrap: balance;
+		}
+		.role {
+			font-family: var(--mono);
+			text-transform: none;
+			letter-spacing: 0.02em;
+			font-size: 12.5px;
+			color: var(--accent-ink);
+			margin: 8px 0 0;
+		}
+		.contact {
+			margin: 11px 0 0;
+			padding: 0;
+			list-style: none;
+			display: flex;
+			flex-wrap: nowrap;
+			justify-content: space-between;
+			width: 100%;
+			gap: 2px 14px;
+			font-size: 12px;
+			color: var(--muted);
+			font-variant-numeric: tabular-nums;
+		}
+		.contact.links {
+			margin-top: 5px;
+		}
+		.contact li {
+			white-space: nowrap;
+			display: inline-flex;
+			align-items: center;
+			gap: 4px;
+		}
+		.contact a {
+			color: inherit;
+			text-decoration: none;
+			border-bottom: 1px solid var(--hair-strong);
+			display: inline-flex;
+			align-items: center;
+			gap: 4px;
+		}
+		.contact a:hover {
+			color: var(--accent-ink);
+			border-color: var(--accent);
+		}
+		.contact svg.ci {
+			width: 11px;
+			height: 11px;
+			fill: currentColor;
+			flex: none;
+		}
+		.contact svg.cg {
+			fill: none;
+			stroke: currentColor;
+			stroke-width: 2;
+			stroke-linecap: round;
+			stroke-linejoin: round;
+		}
+
+		section {
+			margin-top: 24px;
+		}
+		.sec-head {
+			display: flex;
+			align-items: baseline;
+			gap: 14px;
+			margin: 0 0 12px;
+		}
+		.sec-head h2 {
+			font-family: var(--serif);
+			font-weight: 600;
+			font-size: 18px;
+			letter-spacing: 0.01em;
+			margin: 0;
+			white-space: nowrap;
+		}
+		.sec-head .rule {
+			flex: 1;
+			height: 1px;
+			background: var(--hair);
+		}
+
+		.lead {
+			font-size: 14.5px;
+			line-height: 1.55;
+			margin: 0;
+			text-align: justify;
+		}
+		.lead strong {
+			color: var(--ink);
+			font-weight: 600;
+		}
+
+		.job-head {
+			display: flex;
+			justify-content: space-between;
+			align-items: baseline;
+			flex-wrap: wrap;
+			gap: 2px 16px;
+		}
+		.job-title {
+			font-size: 16.5px;
+			font-weight: 700;
+			margin: 0;
+		}
+		.job-title .company {
+			color: var(--accent-ink);
+		}
+		.job-when {
+			font-family: var(--mono);
+			font-size: 12px;
+			letter-spacing: 0.03em;
+			color: var(--muted);
+			font-variant-numeric: tabular-nums;
+			white-space: nowrap;
+		}
+		.job-sub {
+			font-size: 13px;
+			color: var(--muted);
+			margin: 6px 0 0;
+		}
+		.role-sub {
+			display: flex;
+			justify-content: space-between;
+			align-items: baseline;
+			flex-wrap: wrap;
+			gap: 2px 16px;
+			margin-top: 5px;
+		}
+		.role-sub .rt {
+			font-size: 14px;
+			font-weight: 600;
+		}
+		.role-sub .rt .tag {
+			font-weight: 400;
+			color: var(--faint);
+			font-size: 12.5px;
+		}
+		.role-sub .rw {
+			font-family: var(--mono);
+			font-size: 11.5px;
+			letter-spacing: 0.03em;
+			color: var(--muted);
+			font-variant-numeric: tabular-nums;
+			white-space: nowrap;
+		}
+
+		.track {
+			margin-top: 14px;
+		}
+		.track > h4 {
+			font-family: var(--mono);
+			text-transform: uppercase;
+			letter-spacing: 0.11em;
+			font-size: 11px;
+			color: var(--accent-ink);
+			margin: 0 0 7px;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+		}
+		.track > h4::before {
+			content: '';
+			width: 6px;
+			height: 6px;
+			background: var(--accent);
+			transform: rotate(45deg);
+			flex: none;
+		}
+
+		ul.bullets {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			display: flex;
+			flex-direction: column;
+			gap: 6px;
+		}
+		ul.bullets li {
+			position: relative;
+			padding-left: 17px;
+			font-size: 13.7px;
+			line-height: 1.48;
+			text-align: justify;
+		}
+		ul.bullets li::before {
+			content: '';
+			position: absolute;
+			left: 2px;
+			top: 0.55em;
+			width: 5px;
+			height: 5px;
+			border: 1px solid var(--accent);
+			border-radius: 50%;
+		}
+		ul.bullets strong {
+			font-weight: 700;
+			color: var(--ink);
+		}
+		.metric {
+			font-family: var(--mono);
+			font-variant-numeric: tabular-nums;
+			font-weight: 600;
+			color: var(--accent-ink);
+			font-size: 0.92em;
+		}
+
+		.edu {
+			display: flex;
+			flex-direction: column;
+			gap: 9px;
+		}
+		.edu-row {
+			display: flex;
+			justify-content: space-between;
+			align-items: baseline;
+			flex-wrap: wrap;
+			gap: 1px 16px;
+			break-inside: avoid;
+		}
+		.edu-degree {
+			font-size: 14.5px;
+			font-weight: 700;
+			margin: 0;
+		}
+		.edu-school {
+			font-size: 13px;
+			color: var(--muted);
+			margin: 1px 0 0;
+			width: 100%;
+			order: 3;
+		}
+		.edu-when {
+			font-family: var(--mono);
+			font-size: 11.5px;
+			letter-spacing: 0.02em;
+			color: var(--accent-ink);
+			font-variant-numeric: tabular-nums;
+			white-space: nowrap;
+		}
+
+		.skills {
+			display: grid;
+			grid-template-columns: max-content 1fr;
+			gap: 7px 18px;
+			align-items: start;
+		}
+		.skills dt {
+			font-family: var(--mono);
+			text-transform: uppercase;
+			letter-spacing: 0.08em;
+			font-size: 10.5px;
+			color: var(--muted);
+			padding-top: 3px;
+		}
+		.skills dd {
+			margin: 0;
+		}
+		.chips {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 5px;
+		}
+		.chip {
+			background: var(--chip);
+			color: var(--chip-ink);
+			border-radius: 4px;
+			padding: 2px 8px;
+			font-size: 12px;
+			line-height: 1.4;
+			white-space: nowrap;
+		}
+
+		@media (max-width: 560px) {
+			.skills {
+				grid-template-columns: 1fr;
+				gap: 3px 0;
+			}
+			.skills dt {
+				padding-top: 11px;
+			}
+			.skills dt:first-of-type {
+				padding-top: 0;
+			}
+		}
+
+		@page {
+			size: A4;
+			margin: 0.7in 0.4in;
+		}
+		@media print {
+			:root {
+				--paper: #ffffff;
+				--raise: #ffffff;
+				--ink: #10181e;
+				--muted: #45535a;
+				--faint: #6b7a80;
+				--accent: #0a5f5c;
+				--accent-ink: #084c49;
+				--chip: #eef4f3;
+				--chip-ink: #0a5450;
+				--hair: #d3dcdb;
+				--hair-strong: #b4c2c1;
+			}
+			body {
+				font-size: 9.4pt;
+				line-height: 1.43;
+			}
+			.sheet {
+				max-width: none;
+				padding: 0;
+			}
+			section {
+				margin-top: 10px;
+			}
+			.track {
+				margin-top: 9px;
+			}
+			ul.bullets {
+				gap: 5px;
+			}
+			.sec-head {
+				margin-bottom: 8px;
+			}
+			.edu {
+				gap: 9px;
+			}
+			.skills {
+				gap: 8px 18px;
+			}
+			.job-sub {
+				margin-top: 5px;
+			}
+			.role-sub {
+				margin-top: 3px;
+			}
+			.job-head,
+			li,
+			.edu-row {
+				break-inside: avoid;
+			}
+			.track > h4 {
+				break-after: avoid;
+			}
+			a {
+				color: inherit;
+			}
+		}
+	</style>
+
+	<div class="sheet">
+		<header class="masthead">
+			<h1 class="name">Santhosh&nbsp;V</h1>
+			<p class="role">Full-Stack Software Engineer · Fintech &amp; Payments</p>
+			<ul class="contact">
+				<li>
+					<a href="tel:+919025928985"
+						><svg class="ci cg" viewBox="0 0 24 24" aria-hidden="true">
+							<path
+								d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"
+							/></svg
+						>+91 90259 28985</a
+					>
+				</li>
+				<li>
+					<a href="mailto:santhosh20020923@gmail.com"
+						><svg class="ci cg" viewBox="0 0 24 24" aria-hidden="true">
+							<path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" />
+							<path d="m22 6-10 7L2 6" /></svg
+						>santhosh20020923@gmail.com</a
+					>
+				</li>
+				<li>
+					<svg class="ci cg" viewBox="0 0 24 24" aria-hidden="true">
+						<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+						<circle cx="12" cy="10" r="3" /></svg
+					>Chengalpattu, Tamil Nadu, India
+				</li>
+			</ul>
+			<ul class="contact links">
+				<li>
+					<a href="https://www.linkedin.com/in/santhosh-veerabathiran"
+						><svg class="ci" viewBox="0 0 24 24" aria-hidden="true">
+							<path
+								d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"
+							/></svg
+						>santhosh-veerabathiran</a
+					>
+				</li>
+				<li>
+					<a href="https://github.com/santhosh-veerabathiran"
+						><svg class="ci" viewBox="0 0 24 24" aria-hidden="true">
+							<path
+								d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.014 2.898-.014 3.293 0 .322.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+							/></svg
+						>santhosh-veerabathiran</a
+					>
+				</li>
+				<li>
+					<a href="https://santhosh-veerabathiran-portfolio.pages.dev"
+						><svg class="ci cg" viewBox="0 0 24 24" aria-hidden="true">
+							<circle cx="12" cy="12" r="10" />
+							<path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20" /></svg
+						>santhosh-veerabathiran-portfolio</a
+					>
+				</li>
+			</ul>
+		</header>
+
+		<section aria-label="Summary">
+			<p class="lead">
+				Full-stack engineer building payments and acquiring infrastructure — <strong>1,150+ commits across ~30 NestJS/TypeScript microservices and the Angular operations console</strong> of a Swedish payments platform. Built an event-driven
+				settlement engine and an AML transaction-monitoring rule engine, authored a <strong>from-scratch typed Creditsafe credit-data SDK</strong>, and owned the platform's global search service. Shipped two production AI features and rebuilt
+				the ops console's <strong>list, ticketing and alert-review</strong> experiences in Angular (Signals).
+			</p>
+		</section>
+
+		<section aria-label="Work Experience">
+			<div class="sec-head">
+				<h2>Work Experience</h2>
+				<span class="rule"></span>
+			</div>
+
+			<div class="job-head">
+				<p class="job-title"><span class="company">Surfboard</span> · Chennai, India</p>
+				<span class="job-when"><strong>Feb 2024 – Present</strong> · 2 yrs 6 mos</span>
+			</div>
+			<div class="role-sub">
+				<span class="rt">Software Engineer</span>
+				<span class="rw">Jun 2024 – Present</span>
+			</div>
+			<div class="role-sub">
+				<span class="rt">Software Engineer Intern</span>
+				<span class="rw">Feb 2024 – May 2024</span>
+			</div>
+			<p class="job-sub">Payments &amp; acquiring platform · Nx monorepo of NestJS/TypeScript microservices + the Angular operations console.</p>
+
+			<div class="track">
+				<h4>Payments, Settlements &amp; Billing</h4>
+				<ul class="bullets">
+					<li>Built an <strong>event-driven settlement engine</strong> computing merchant payouts from acquirer files — fees, commissions, VAT, adjustments and chargebacks — across four run cadences from daily to partner-level.</li>
+					<li>Generated <strong>bank payout files</strong>, including a DNB (NOK) ISO-20022-style XML with KID/OCR creditor references and BBAN transfers, plus PDF/CSV settlement reports.</li>
+					<li>Designed <strong>partner/merchant billing-plan management</strong> with currency-specific, per-payment-method fees, wiring fee calculation into the payment-completion path.</li>
+					<li>Improved a Bun/Elysia <strong>payment-isolation service</strong> — moved the Epassi integration to secure <strong>per-merchant credentials</strong> and fixed a payment-method caching bug.</li>
+				</ul>
+			</div>
+
+			<div class="track">
+				<h4>KYC, Credit Data &amp; AML</h4>
+				<ul class="bullets">
+					<li>
+						Designed and built a <strong>from-scratch, typed Creditsafe credit-data SDK</strong> — a fluent client + facade over three transports (Connect REST/JWT, getData OAuth2, SOAP webservices) with per-transport auth, a memory/Redis
+						token store, XML→JSON parsing, a typed error catalog, request-scoped logging with secret redaction, and raw-response persistence to a unified table — then migrated every legacy consumer and stored response onto it.
+					</li>
+					<li>
+						Implemented the <strong>AML transaction-monitoring rule engine</strong> — MCC/merchant-level overrides, currency-specific config, and timezone-aware 1-min/10-min/daily evaluation cadences — with bulk alert management and audit
+						log.
+					</li>
+					<li>Extended <strong>KYC/KYB onboarding across Swedish and Finnish markets</strong> — credit-info fields, a corporate-id migration and admin bank-detail flows.</li>
+					<li>
+						Shipped an <strong>AI-assisted AML alert-triage assistant</strong> (Google Gemini, structured JSON) classifying alerts into three review categories with confidence and reasoning, extended with a googleSearch-grounded
+						store-research pipeline — kept strictly human-in-the-loop with a full audit trail.
+					</li>
+				</ul>
+			</div>
+
+			<div class="track">
+				<h4>Search, Data &amp; Integrations</h4>
+				<ul class="bullets">
+					<li>
+						Sole builder and owner of the platform's <strong>Typesense-backed global search service</strong> (built during my internship) — faceted, partner-scoped search APIs, event-driven document sync, index migrations and
+						Slack-alerted maintenance crons.
+					</li>
+					<li>Built <strong>merchant/partner analytics over ClickHouse</strong> — a top-merchants-by-currency API with two-level pagination — plus a transactions → analytics migration pipeline feeding the reporting layer.</li>
+					<li>
+						Delivered integrations spanning <strong>six payment providers</strong> — two-phase Fiserv onboarding (polling cron, GCS transfer), BankAxept and AMEX enablement, Klarna/Fiserv SFTP settlement-file ingestion, and
+						Worldline/Northmill reconciliation.
+					</li>
+					<li>
+						Built an <strong>autonomous merchant-onboarding browser agent</strong> (Claude Sonnet + Browserbase Stagehand) that creates sites and configures activities when a partner form flow breaks, and integrated nShift returns
+						shipping behind a provider factory with fallback and RFC-7231-aware retry.
+					</li>
+				</ul>
+			</div>
+
+			<div class="track">
+				<h4>Frontend — Operations Console (Angular, Signals)</h4>
+				<ul class="bullets">
+					<li>
+						Built a <strong>support ticketing system</strong> — a shared inbox with assignee filters and unassigned counts, group-by partner/merchant, an @-mention picker, and ticket tabs embedded on merchant and partner detail views.
+					</li>
+					<li>
+						<strong>Rebuilt the console's list pages with a new UI</strong> — filter panels, multi-sort and status cards across merchant, partner, KYC and onboarding lists, unified on a reusable list-shell and a shared date-range filter
+						adopted across <strong>15 pages</strong>.
+					</li>
+					<li>Built the <strong>transaction-monitoring AI alert-review UI</strong> — confidence-scored dispositions with role-gated apply and hover previews — plus a human-readable rule-threshold editor with live rule-name templating.</li>
+					<li>Built the <strong>activity feed</strong> and improved the console's stability — fixing memory leaks, timer cleanup and offline data-sync reliability.</li>
+				</ul>
+			</div>
+		</section>
+
+		<section aria-label="Education">
+			<div class="sec-head">
+				<h2>Education</h2>
+				<span class="rule"></span>
+			</div>
+			<div class="edu">
+				<div class="edu-row">
+					<p class="edu-degree">Master of Computer Applications (MCA)</p>
+					<span class="edu-when">2022 – 2024 · CGPA 8.98</span>
+					<p class="edu-school">Sri Chandrasekharendra Saraswathi Viswa Mahavidyalaya, Kanchipuram, India</p>
+				</div>
+				<div class="edu-row">
+					<p class="edu-degree">B.Sc. Mathematics</p>
+					<span class="edu-when">2019 – 2022 · CGPA 8.03</span>
+					<p class="edu-school">Agurchand Manmull Jain College, Meenambakkam, Chennai, India</p>
+				</div>
+			</div>
+		</section>
+
+		<section aria-label="Skills">
+			<div class="sec-head">
+				<h2>Skills</h2>
+				<span class="rule"></span>
+			</div>
+			<dl class="skills">
+				<dt>Languages</dt>
+				<dd>
+					<div class="chips"><span class="chip">TypeScript</span><span class="chip">JavaScript</span><span class="chip">SQL</span></div>
+				</dd>
+
+				<dt>Backend &amp; Runtime</dt>
+				<dd>
+					<div class="chips"><span class="chip">Node.js</span><span class="chip">Bun</span><span class="chip">NestJS</span><span class="chip">Fastify</span><span class="chip">Elysia</span><span class="chip">Nx monorepo</span></div>
+				</dd>
+
+				<dt>Frontend</dt>
+				<dd>
+					<div class="chips"><span class="chip">Angular (Signals)</span><span class="chip">RxJS</span><span class="chip">Dexie / IndexedDB</span><span class="chip">Tailwind</span><span class="chip">SCSS</span></div>
+				</dd>
+
+				<dt>Databases &amp; Search</dt>
+				<dd>
+					<div class="chips"><span class="chip">PostgreSQL</span><span class="chip">TypeORM</span><span class="chip">Prisma / Drizzle</span><span class="chip">Typesense</span><span class="chip">ClickHouse / QuestDB</span></div>
+				</dd>
+
+				<dt>Messaging &amp; Cache</dt>
+				<dd>
+					<div class="chips"><span class="chip">RabbitMQ</span><span class="chip">Redis</span><span class="chip">Event-driven / pub-sub</span></div>
+				</dd>
+
+				<dt>AI</dt>
+				<dd>
+					<div class="chips">
+						<span class="chip">Google Gemini</span><span class="chip">Claude (Sonnet)</span><span class="chip">Structured output</span><span class="chip">Search grounding</span><span class="chip">Stagehand agent</span>
+					</div>
+				</dd>
+
+				<dt>Integrations</dt>
+				<dd>
+					<div class="chips">
+						<span class="chip">REST · SOAP/XML</span><span class="chip">OAuth2 / JWT</span><span class="chip">ISO-20022</span><span class="chip">SFTP / FTP</span><span class="chip">GCS · KMS</span><span class="chip">Fiserv</span
+						><span class="chip">Worldline</span><span class="chip">Klarna</span><span class="chip">Creditsafe</span>
+					</div>
+				</dd>
+
+				<dt>Practices</dt>
+				<dd>
+					<div class="chips">
+						<span class="chip">SDK / client design</span><span class="chip">Jest / Supertest</span><span class="chip">Cypress</span><span class="chip">Schema validation (TypeBox/Zod)</span><span class="chip">Retry &amp; backoff</span
+						><span class="chip">Observability</span>
+					</div>
+				</dd>
+			</dl>
+		</section>
+	</div>
+</html>
