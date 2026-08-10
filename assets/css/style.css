@@ -632,7 +632,7 @@ h1.name .ch.up {
 }
 @keyframes slide {
 	to {
-		transform: translateX(-50%);
+		transform: translateX(var(--mq-end, -50%));
 	}
 }
 

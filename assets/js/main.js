@@ -46,6 +46,7 @@ class Portfolio {
 		},
 	};
 	parallaxTicking = false;
+	marqueeFrame = 0;
 
 	employmentStart = new Date(2024, 1, 1);
 	employmentQuit = null;
@@ -60,6 +61,7 @@ class Portfolio {
 		this.setupStats();
 		this.setupTenure();
 		this.setupParallax();
+		this.setupMarquee();
 
 		if (this.finePointer && !this.reduceMotion) {
 			this.setupPointerEffects();
@@ -617,6 +619,57 @@ class Portfolio {
 		);
 
 		update();
+	}
+
+	setupMarquee() {
+		const rows = [];
+		document.querySelectorAll('.marquee').forEach((marquee) => {
+			const track = marquee.querySelector('.track');
+			if (!track) {
+				return;
+			}
+			rows.push({
+				marquee,
+				track,
+				unit: Array.from(track.children).map((node) => {
+					return node.cloneNode(true);
+				}),
+			});
+		});
+
+		const build = () => {
+			rows.forEach(({ marquee, track, unit }) => {
+				track.replaceChildren(
+					...unit.map((node) => {
+						return node.cloneNode(true);
+					}),
+				);
+				const unitWidth = track.scrollWidth;
+				while (track.scrollWidth < marquee.clientWidth && track.children.length < 400) {
+					unit.forEach((node) => {
+						track.appendChild(node.cloneNode(true));
+					});
+				}
+				const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+				const runWidth = track.scrollWidth;
+				Array.from(track.children).forEach((node) => {
+					track.appendChild(node.cloneNode(true));
+				});
+				track.style.setProperty('--mq-end', `-${runWidth + gap}px`);
+				track.style.animationDuration = `${(32 * (runWidth + gap)) / (unitWidth / 2)}s`;
+			});
+		};
+
+		build();
+		addEventListener('load', build);
+		addEventListener(
+			'resize',
+			() => {
+				cancelAnimationFrame(this.marqueeFrame);
+				this.marqueeFrame = requestAnimationFrame(build);
+			},
+			{ passive: true },
+		);
 	}
 }
 
