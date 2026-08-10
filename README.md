@@ -6,7 +6,7 @@
 
 **Full-Stack Software Engineer · Fintech &amp; Payments**
 
-[![Live Site](https://img.shields.io/badge/Live-santhosh--veerabathiran--portfolio.pages.dev-2dd4bf?style=for-the-badge&logo=cloudflarepages&logoColor=white)](https://santhosh-veerabathiran-portfolio.pages.dev/)
+[![Live Site](https://img.shields.io/badge/Live-portfolio.santhosh--veerabathiran.com-2dd4bf?style=for-the-badge&logo=cloudflarepages&logoColor=white)](https://portfolio.santhosh-veerabathiran.com/)
 &nbsp;
 [![Résumé](https://img.shields.io/badge/R%C3%A9sum%C3%A9-PDF-0f766e?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](assets/resumes/santhosh-resume.pdf)
 
@@ -28,7 +28,7 @@
 A hand-built, single-page developer portfolio — dark theme, teal accent, and a fully custom set of
 animations with **no libraries and no build step**. Just open `index.html`.
 
-> 🔗 **Live:** https://santhosh-veerabathiran-portfolio.pages.dev/
+> 🔗 **Live:** https://portfolio.santhosh-veerabathiran.com/
 
 ## 🎬 Features
 

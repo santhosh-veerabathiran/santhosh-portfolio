@@ -2,6 +2,11 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
+		<script>
+			if (location.hostname.endsWith('.pages.dev')) {
+				location.replace('https://portfolio.santhosh-veerabathiran.com' + location.pathname + location.search + location.hash);
+			}
+		</script>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="description" content="Santhosh Veerabathiran — Full Stack Software Developer specialising in fintech and payments." />
 		<title>Santhosh Veerabathiran — Full Stack Software Developer</title>
@@ -12,14 +17,14 @@
 		/>
 
 		<meta property="og:type" content="website" />
-		<meta property="og:url" content="https://santhosh-veerabathiran-portfolio.pages.dev/" />
+		<meta property="og:url" content="https://portfolio.santhosh-veerabathiran.com/" />
 		<meta property="og:title" content="Santhosh Veerabathiran — Full Stack Software Developer" />
 		<meta property="og:description" content="Full Stack Software Developer building payments &amp; acquiring infrastructure — settlements, KYC/AML, search and AI." />
-		<meta property="og:image" content="https://santhosh-veerabathiran-portfolio.pages.dev/assets/images/og-image.png" />
+		<meta property="og:image" content="https://portfolio.santhosh-veerabathiran.com/assets/images/og-image.png" />
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content="Santhosh Veerabathiran — Full Stack Software Developer" />
 		<meta name="twitter:description" content="Full Stack Software Developer building payments &amp; acquiring infrastructure — settlements, KYC/AML, search and AI." />
-		<meta name="twitter:image" content="https://santhosh-veerabathiran-portfolio.pages.dev/assets/images/og-image.png" />
+		<meta name="twitter:image" content="https://portfolio.santhosh-veerabathiran.com/assets/images/og-image.png" />
 
 		<meta name="twitter:creator" content="@santhosh_2392" />
 		<meta name="author" content="Santhosh Veerabathiran" />
@@ -27,7 +32,7 @@
 		<meta name="google-site-verification" content="JusDoc1cIxVAkDBvzEL6UisOESCohr46zMb8-9tiEXo" />
 		<meta name="theme-color" content="#2dd4bf" />
 		<meta name="keywords" content="Santhosh Veerabathiran, Full Stack Developer, Software Engineer, Fintech, Payments, NestJS, Angular, TypeScript, Node.js, portfolio" />
-		<link rel="canonical" href="https://santhosh-veerabathiran-portfolio.pages.dev/" />
+		<link rel="canonical" href="https://portfolio.santhosh-veerabathiran.com/" />
 		<meta property="og:site_name" content="Santhosh Veerabathiran" />
 		<meta property="og:image:width" content="2400" />
 		<meta property="og:image:height" content="1520" />
@@ -38,8 +43,8 @@
 				"@context": "https://schema.org",
 				"@type": "Person",
 				"name": "Santhosh Veerabathiran",
-				"url": "https://santhosh-veerabathiran-portfolio.pages.dev/",
-				"image": "https://santhosh-veerabathiran-portfolio.pages.dev/assets/images/og-image.png",
+				"url": "https://portfolio.santhosh-veerabathiran.com/",
+				"image": "https://portfolio.santhosh-veerabathiran.com/assets/images/og-image.png",
 				"jobTitle": "Full Stack Software Developer",
 				"worksFor": { "@type": "Organization", "name": "Surfboard Payments" },
 				"email": "mailto:santhosh20020923@gmail.com",
@@ -730,8 +735,8 @@
 							</div>
 						</div>
 						<p class="proj-desc">
-							A three-sided home-services marketplace with customer, professional and admin portals — a searchable service catalog, quantity-based booking with overlap prevention and rescheduling, OTP email auth, online payments with printable receipts, map-based addresses, reviews and favourites, backed by a Redis
-							read-through cache.
+							A three-sided home-services marketplace with customer, professional and admin portals — a searchable service catalog, quantity-based booking with overlap prevention and rescheduling, OTP email auth, online payments with
+							printable receipts, map-based addresses, reviews and favourites, backed by a Redis read-through cache.
 						</p>
 						<div class="chips"><span class="chip">Laravel 13</span><span class="chip">Tailwind CSS</span><span class="chip">Alpine.js</span><span class="chip">MySQL</span><span class="chip">Redis</span></div>
 						<div class="proj-links">

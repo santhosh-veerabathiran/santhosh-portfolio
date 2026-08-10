@@ -1,9 +1,13 @@
 class Theme {
 	root = document.documentElement;
+	themes = ['marine', 'sunset', 'violet', 'mono', 'crimson', 'ember'];
 	name = new URLSearchParams(location.search).get('theme');
 
 	constructor() {
-		if (!this.name || !/^[a-z0-9-]+$/i.test(this.name)) {
+		if (!this.name) {
+			this.name = this.themes[Math.floor(Math.random() * this.themes.length)];
+		}
+		if (!/^[a-z0-9-]+$/i.test(this.name)) {
 			return;
 		}
 
