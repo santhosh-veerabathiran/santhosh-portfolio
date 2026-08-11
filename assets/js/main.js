@@ -44,6 +44,9 @@ class Portfolio {
 		petals: (timestamp) => {
 			this.drawPetals(timestamp);
 		},
+		waves: (timestamp) => {
+			this.drawWaves(timestamp);
+		},
 	};
 	parallaxTicking = false;
 	marqueeFrame = 0;
@@ -591,6 +594,51 @@ class Portfolio {
 		}
 
 		context.globalAlpha = 1;
+	}
+
+	drawWaves(timestamp) {
+		const context = this.context;
+		const { width, height } = this;
+		context.clearRect(0, 0, width, height);
+
+		const spacing = 46;
+		const lineCount = Math.ceil(height / spacing) + 1;
+		const time = timestamp / 1000;
+
+		for (let index = 0; index < lineCount; index++) {
+			const baseY = index * spacing;
+			const phase = index * 0.55;
+
+			context.beginPath();
+			for (let x = 0; x <= width; x += 12) {
+				const primary = Math.sin(x / 220 + phase + time * this.speed) * 10;
+				const secondary = Math.sin(x / 90 - time * this.speed * 0.6 + phase) * 4;
+				const y = baseY + primary + secondary - this.wavePointerLift(x, baseY);
+
+				if (x === 0) {
+					context.moveTo(x, y);
+				} else {
+					context.lineTo(x, y);
+				}
+			}
+
+			context.globalAlpha = 0.16 + 0.08 * Math.sin(time * 0.5 + phase);
+			context.strokeStyle = this.dotColor;
+			context.lineWidth = 1;
+			context.stroke();
+		}
+
+		context.globalAlpha = 1;
+	}
+
+	wavePointerLift(x, baseY) {
+		const radius = 170;
+		const distance = Math.hypot(x - this.pointer.x, baseY - this.pointer.y);
+		if (distance > radius) {
+			return 0;
+		}
+
+		return (1 - distance / radius) * 28;
 	}
 
 	setupParallax() {

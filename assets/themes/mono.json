@@ -33,12 +33,12 @@
 	"background": {
 		"pattern": "dots",
 		"gridSize": "26px",
-		"animation": "none",
-		"orbs": false,
+		"animation": "waves",
+		"orbs": true,
 		"aurora": false
 	},
 	"motion": {
-		"speed": 0.5,
+		"speed": 0.7,
 		"hover": "none"
 	}
 }
