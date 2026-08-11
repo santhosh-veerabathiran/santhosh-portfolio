@@ -171,26 +171,7 @@ nav.top.scrolled {
 	color: var(--ink);
 	display: inline-flex;
 	align-items: center;
-	gap: 9px;
-}
-.brand .dot {
-	width: 9px;
-	height: 9px;
-	border-radius: 50%;
-	background: var(--accent);
-	box-shadow: 0 0 0 0 var(--accent);
-	animation: beat 2.4s ease-out infinite;
-}
-@keyframes beat {
-	0% {
-		box-shadow: 0 0 0 0 var(--glow);
-	}
-	70% {
-		box-shadow: 0 0 0 8px transparent;
-	}
-	100% {
-		box-shadow: 0 0 0 0 transparent;
-	}
+	gap: 11px;
 }
 .nav-links {
 	display: flex;
@@ -203,15 +184,14 @@ nav.top.scrolled {
 	letter-spacing: 0.03em;
 	color: var(--muted);
 	padding: 8px 12px;
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
 	border-radius: 8px;
 	transition:
 		color 0.2s,
 		background 0.2s;
 	position: relative;
-}
-.nav-links a .n {
-	color: var(--accent);
-	margin-right: 5px;
 }
 .nav-links a:hover {
 	color: var(--ink);
@@ -348,7 +328,7 @@ header.hero {
 	z-index: 0;
 	pointer-events: none;
 	background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-	background-size: 56px 56px;
+	background-size: var(--grid-size, 56px) var(--grid-size, 56px);
 	-webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 35%, #000 20%, transparent 80%);
 	mask-image: radial-gradient(ellipse 80% 70% at 50% 35%, #000 20%, transparent 80%);
 }
@@ -360,7 +340,8 @@ header.hero {
 }
 .eyebrow {
 	font-family: var(--mono);
-	font-size: 13px;
+	font-size: 15px;
+	font-weight: 600;
 	letter-spacing: 0.05em;
 	color: var(--accent);
 	display: inline-flex;
@@ -497,7 +478,7 @@ h1.name .ch.up {
 
 .socials {
 	display: flex;
-	gap: 24px;
+	gap: 22px;
 	margin: 32px 0 0;
 }
 .socials a {
@@ -506,22 +487,14 @@ h1.name .ch.up {
 	color: var(--muted);
 	display: inline-flex;
 	align-items: center;
-	gap: 8px;
+	position: relative;
 	transition:
 		color 0.2s,
 		transform 0.2s;
 }
-.socials a::before {
-	content: '↗';
-	color: var(--accent);
-	opacity: 0.7;
-	transition: transform 0.2s;
-}
 .socials a:hover {
 	color: var(--accent-2);
-}
-.socials a:hover::before {
-	transform: translate(2px, -2px);
+	transform: translateY(-2px);
 }
 
 .stats {
@@ -623,12 +596,7 @@ h1.name .ch.up {
 	color: var(--muted);
 	display: inline-flex;
 	align-items: center;
-	gap: 42px;
-}
-.marquee .item::after {
-	content: '◆';
-	color: var(--accent);
-	font-size: 8px;
+	gap: 9px;
 }
 @keyframes slide {
 	to {
@@ -645,19 +613,6 @@ section.blk {
 	position: relative;
 	margin-bottom: 44px;
 }
-.ghost-n {
-	position: absolute;
-	right: 0;
-	top: -46px;
-	font-size: clamp(90px, 16vw, 190px);
-	font-weight: 800;
-	line-height: 1;
-	color: rgba(255, 255, 255, 0.022);
-	letter-spacing: -0.04em;
-	z-index: 0;
-	pointer-events: none;
-	user-select: none;
-}
 .sec-label {
 	font-family: var(--mono);
 	font-size: 13px;
@@ -669,9 +624,6 @@ section.blk {
 	gap: 12px;
 	position: relative;
 	z-index: 1;
-}
-.sec-label .idx {
-	color: var(--faint);
 }
 .sec-label::after {
 	content: '';
@@ -747,6 +699,9 @@ section.blk {
 	letter-spacing: 0.08em;
 	color: var(--faint);
 	margin-bottom: 3px;
+	display: flex;
+	align-items: center;
+	gap: 8px;
 }
 .facts dd {
 	margin: 0;
@@ -840,7 +795,7 @@ section.blk {
 	inset: 0;
 	opacity: 0;
 	transition: opacity 0.3s;
-	background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 0%), rgba(45, 212, 191, 0.14), transparent 45%);
+	background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 0%), color-mix(in srgb, var(--accent) 15%, transparent), transparent 45%);
 	pointer-events: none;
 }
 .card:hover {
@@ -849,19 +804,6 @@ section.blk {
 }
 .card:hover .beam {
 	opacity: 1;
-}
-.card .kicker {
-	font-family: var(--mono);
-	font-size: 11px;
-	letter-spacing: 0.09em;
-	color: var(--accent);
-	display: flex;
-	align-items: center;
-	gap: 10px;
-	margin-bottom: 14px;
-}
-.card .kicker .cn {
-	color: var(--faint);
 }
 .card h4 {
 	margin: 0 0 14px;
@@ -899,22 +841,6 @@ section.blk {
 }
 
 /* Skills */
-.skills-grid {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	gap: 14px 40px;
-}
-.skrow {
-	border-top: 1px solid var(--line);
-	padding-top: 16px;
-}
-.skrow dt {
-	font-family: var(--mono);
-	font-size: 11.5px;
-	letter-spacing: 0.08em;
-	color: var(--faint);
-	margin-bottom: 12px;
-}
 .chips {
 	display: flex;
 	flex-wrap: wrap;
@@ -927,6 +853,9 @@ section.blk {
 	border: 1px solid var(--line);
 	border-radius: 9px;
 	padding: 6px 12px;
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
 	transition:
 		border-color 0.2s,
 		color 0.2s,
@@ -973,13 +902,16 @@ section.blk {
 	flex-wrap: wrap;
 	justify-content: center;
 	gap: 12px 32px;
-	margin: 40px 0 0;
+	margin: 22px 0 0;
 }
 .contact-links a {
 	font-family: var(--mono);
 	font-size: 14px;
 	color: var(--muted);
 	transition: color 0.2s;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
 }
 .contact-links a:hover {
 	color: var(--accent-2);
@@ -1007,6 +939,9 @@ footer {
 }
 .totop {
 	cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
 }
 
 /* reveal */
@@ -1042,12 +977,8 @@ footer {
 
 @media (max-width: 860px) {
 	.about-grid,
-	.cards,
-	.skills-grid {
+	.cards {
 		grid-template-columns: 1fr;
-	}
-	.skills-grid {
-		gap: 12px;
 	}
 }
 @media (max-width: 680px) {
@@ -1082,9 +1013,6 @@ footer {
 		flex-wrap: wrap;
 		gap: 14px 22px;
 	}
-	.ghost-n {
-		display: none;
-	}
 }
 @media (hover: none) {
 	.spotlight {
@@ -1099,7 +1027,6 @@ footer {
 	.aurora,
 	.marquee .track,
 	.scrollcue .rail::after,
-	.brand .dot,
 	.live .pulse::after {
 		animation: none !important;
 	}
@@ -1144,33 +1071,15 @@ footer {
 	height: 1.15em;
 	color: var(--accent);
 }
-.card .kicker .ic {
-	width: 1.2em;
-	height: 1.2em;
-	color: var(--accent);
-}
-.facts dt {
-	display: flex;
-	align-items: center;
-	gap: 8px;
-}
 .facts dt .ic {
 	width: 14px;
 	height: 14px;
 	color: var(--accent);
 }
-.socials a::before {
-	content: none !important;
-}
 .socials a .ic,
 .contact-links a .ic {
 	width: 15px;
 	height: 15px;
-}
-.contact-links a {
-	display: inline-flex;
-	align-items: center;
-	gap: 8px;
 }
 .btn .ic {
 	width: 1.05em;
@@ -1180,11 +1089,6 @@ footer {
 	width: 1.05em;
 	height: 1.05em;
 	vertical-align: -0.16em;
-}
-.totop {
-	display: inline-flex;
-	align-items: center;
-	gap: 6px;
 }
 .totop .ic {
 	width: 14px;
@@ -1312,10 +1216,6 @@ footer {
 .stats .stat .num span {
 	color: inherit;
 }
-/* colored beam for work cards */
-.card .beam {
-	background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 0%), color-mix(in srgb, var(--accent) 15%, transparent), transparent 45%);
-}
 
 /* ---------- Project cards ---------- */
 .proj-cards {
@@ -1433,10 +1333,6 @@ footer {
 }
 
 /* ---------- Eyebrow (bigger, bolder) ---------- */
-.eyebrow {
-	font-size: 15px;
-	font-weight: 600;
-}
 
 /* ---------- Work card icon-badge header ---------- */
 .card .card-head {
@@ -1495,12 +1391,6 @@ footer {
 }
 
 /* ---------- Marquee item icons ---------- */
-.marquee .item {
-	gap: 9px;
-}
-.marquee .item::after {
-	content: none;
-}
 .marquee .item .ic {
 	width: 16px;
 	height: 16px;
@@ -1508,32 +1398,6 @@ footer {
 }
 
 /* ---------- Experience role split (intern → engineer) ---------- */
-.roles {
-	display: flex;
-	flex-direction: column;
-	gap: 4px;
-	margin: 12px 0 2px;
-	max-width: 520px;
-}
-.role-sub {
-	display: flex;
-	justify-content: space-between;
-	align-items: baseline;
-	gap: 12px 16px;
-	flex-wrap: wrap;
-}
-.role-sub .rt {
-	font-size: 14.5px;
-	font-weight: 600;
-	color: var(--ink);
-}
-.role-sub .rw {
-	font-family: var(--mono);
-	font-size: 12px;
-	letter-spacing: 0.03em;
-	color: var(--muted);
-	font-variant-numeric: tabular-nums;
-}
 .job-bar .when strong {
 	color: var(--ink);
 }
@@ -1603,26 +1467,12 @@ footer {
 }
 
 /* ---------- Hero socials: icon-only ---------- */
-.socials {
-	gap: 22px;
-}
-.socials a {
-	gap: 0;
-}
 .socials a .ic {
 	width: 20px;
 	height: 20px;
 }
-.socials a:hover {
-	transform: translateY(-2px);
-}
 
 /* ---------- Skill chip icons ---------- */
-.chip {
-	display: inline-flex;
-	align-items: center;
-	gap: 6px;
-}
 .chip .ic {
 	width: 13px;
 	height: 13px;
@@ -1633,9 +1483,6 @@ footer {
 }
 
 /* ---------- Hero social hover tooltips ---------- */
-.socials a {
-	position: relative;
-}
 .socials a::after {
 	content: attr(aria-label);
 	position: absolute;
@@ -1720,14 +1567,8 @@ footer {
 	font-weight: 600;
 	color: var(--ink);
 }
-.contact-links {
-	margin-top: 22px;
-}
 
 /* ---------- Nav avatar + link icons ---------- */
-.brand {
-	gap: 11px;
-}
 .brand .avatar {
 	width: 40px;
 	height: 40px;
@@ -1750,11 +1591,6 @@ footer {
 	box-shadow: 0 0 0 3px var(--glow);
 	transform: translateY(-1px);
 }
-.nav-links a {
-	display: inline-flex;
-	align-items: center;
-	gap: 6px;
-}
 .nav-links a .ic {
 	width: 14px;
 	height: 14px;
@@ -1763,9 +1599,6 @@ footer {
 /* ---------- Theme-driven background hooks ---------- */
 :root {
 	--grid-size: 56px;
-}
-.hero-grid {
-	background-size: var(--grid-size) var(--grid-size);
 }
 :root[data-pattern='dots'] .hero-grid {
 	background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
