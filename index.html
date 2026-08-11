@@ -153,15 +153,15 @@
 					<path d="M3 12h5M15 12h6" />
 				</symbol>
 				<symbol id="ic-braces" viewBox="0 0 24 24"><path d="M8 3H7a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2 2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h1M16 3h1a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2 2 2 0 0 0-2 2v4a2 2 0 0 1-2 2h-1" /></symbol>
-				<symbol id="ic-hexagon" viewBox="0 0 24 24"><path d="M12 2.5 20 7v10l-8 4.5L4 17V7z" /></symbol>
-				<symbol id="ic-flame" viewBox="0 0 24 24"><path d="M12 2c2 3 5 5 5 9a5 5 0 0 1-10 0c0-1.6.6-2.7 1.6-3.6C9 9 9.6 10 10 11c.6-2 1-4 2-9z" /></symbol>
-				<symbol id="ic-wind" viewBox="0 0 24 24"><path d="M3 8h10a2.5 2.5 0 1 0-2.5-2.5M3 12h15a2.5 2.5 0 1 1-2.5 2.5M3 16h7" /></symbol>
-				<symbol id="ic-hash" viewBox="0 0 24 24"><path d="M9 4 7 20M17 4l-2 16M4 9h16M3 15h16" /></symbol>
 				<symbol id="ic-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z" /></symbol>
 				<symbol id="ic-leaf" viewBox="0 0 24 24">
 					<path d="M4 20c0-8 5-13 16-13 0 11-5 16-13 16-2 0-3-1-3-3z" />
 					<path d="M8 20c2-6 5-8 9-9" />
 				</symbol>
+				<symbol id="ic-hexagon" viewBox="0 0 24 24"><path d="M12 2.5 20 7v10l-8 4.5L4 17V7z" /></symbol>
+				<symbol id="ic-flame" viewBox="0 0 24 24"><path d="M12 2c2 3 5 5 5 9a5 5 0 0 1-10 0c0-1.6.6-2.7 1.6-3.6C9 9 9.6 10 10 11c.6-2 1-4 2-9z" /></symbol>
+				<symbol id="ic-wind" viewBox="0 0 24 24"><path d="M3 8h10a2.5 2.5 0 1 0-2.5-2.5M3 12h15a2.5 2.5 0 1 1-2.5 2.5M3 16h7" /></symbol>
+				<symbol id="ic-hash" viewBox="0 0 24 24"><path d="M9 4 7 20M17 4l-2 16M4 9h16M3 15h16" /></symbol>
 				<symbol id="ic-globe" viewBox="0 0 24 24">
 					<circle cx="12" cy="12" r="9" />
 					<path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18" />
@@ -325,6 +325,11 @@
 		<div class="spotlight" id="spot"></div>
 		<div class="progress" id="prog"></div>
 
+		<!-- Minato theme chrome (inert unless data-active-theme='minato') -->
+		<div class="mt-cursor" id="mtCursor" aria-hidden="true"><i></i><b></b></div>
+		<div class="mt-rail mt-rail-left" aria-hidden="true"><span>Chengalpattu · Tamil Nadu · India — Payments · KYC/AML · Search · AI</span></div>
+		<div class="mt-rail mt-rail-right" aria-hidden="true"><span>Yellow Flash · Shipping Fast</span></div>
+
 		<div class="preloader" id="pre">
 			<div class="pre-mark">Santhosh Veerabathiran<span class="pre-bar"></span></div>
 		</div>
@@ -355,6 +360,39 @@
 				<button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
 			</div>
 		</nav>
+
+		<!-- Minato Act I — scroll-scrubbed opening (inert unless minato theme) -->
+		<section class="mt-act mt-open" data-frames="assets/themes/minato/frames/gaze" data-count="71" aria-hidden="true">
+			<div class="mt-sticky">
+				<canvas class="mt-canvas"></canvas>
+				<div class="mt-wash"></div>
+				<div class="mt-titleblock">
+					<p class="mt-kicker">Full Stack Software Engineer · Fintech &amp; Payments</p>
+					<div class="mt-name">Santhosh <span>Veerabathiran</span></div>
+				</div>
+				<div class="mt-phase" data-phase="0">
+					<h2>The Foundation</h2>
+					<p class="mt-phase-en">2017 — 2023</p>
+					<p class="mt-phase-sub">B.Sc. Mathematics, then MCA — I learned to see the pattern before touching the keys.</p>
+				</div>
+				<div class="mt-phase" data-phase="1">
+					<h2>The Beginning</h2>
+					<p class="mt-phase-en">February 2024</p>
+					<p class="mt-phase-sub">I joined Surfboard Payments as an intern — and built the platform's global search service on my own.</p>
+				</div>
+				<div class="mt-phase" data-phase="2">
+					<h2>Going Full-Time</h2>
+					<p class="mt-phase-en">June 2024</p>
+					<p class="mt-phase-sub">Software Engineer across settlements, KYC/AML, credit data and production AI features.</p>
+				</div>
+				<div class="mt-phase" data-phase="3">
+					<h2>Shipping Fast</h2>
+					<p class="mt-phase-en">Today</p>
+					<p class="mt-phase-sub">1,150+ commits across ~30 microservices and the Angular operations console — end to end.</p>
+				</div>
+				<div class="mt-hint"><span>Scroll</span></div>
+			</div>
+		</section>
 
 		<header class="hero" id="home">
 			<canvas id="net"></canvas>
@@ -601,6 +639,20 @@
 			</div>
 		</section>
 
+		<!-- Minato Act II — velocity scrub (inert unless minato theme) -->
+		<section class="mt-act mt-dash" data-frames="assets/themes/minato/frames/flash" data-count="35" aria-hidden="true">
+			<div class="mt-sticky">
+				<canvas class="mt-canvas"></canvas>
+				<div class="mt-copy">
+					<span class="mt-eyebrow"
+						><svg class="ic"><use href="#ic-bolt" /></svg> Velocity</span
+					>
+					<h2>Fast, End To End</h2>
+					<p>From requirement to release — I design the data model, build the services, wire the UI and ship. The whole distance in one motion.</p>
+				</div>
+			</div>
+		</section>
+
 		<section class="blk" id="work">
 			<div class="wrap">
 				<div class="sec-head reveal">
@@ -745,6 +797,20 @@
 							>
 						</div>
 					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Minato Act III — pointer-tracked sphere (inert unless minato theme) -->
+		<section class="mt-act mt-ras" data-frames="assets/themes/minato/frames/rasengan" data-count="33" aria-hidden="true">
+			<div class="mt-sticky">
+				<canvas class="mt-canvas"></canvas>
+				<div class="mt-copy">
+					<span class="mt-eyebrow"
+						><svg class="ic"><use href="#ic-cpu" /></svg> Skills</span
+					>
+					<h2>Held In The Hand</h2>
+					<p>A toolkit shaped over years of shipping — <b>sharpened every day</b>.</p>
 				</div>
 			</div>
 		</section>
@@ -945,6 +1011,8 @@
 		</section>
 
 		<section class="blk contact" id="contact">
+			<div class="mt-legacy-plate" aria-hidden="true"></div>
+			<div class="mt-legacy-reveal" id="mtLegacyReveal" aria-hidden="true"></div>
 			<div class="wrap">
 				<div class="sec-head reveal">
 					<p class="sec-label">

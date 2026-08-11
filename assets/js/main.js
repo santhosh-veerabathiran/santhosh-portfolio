@@ -1,3 +1,26 @@
+class FrameSequence {
+	images = [];
+	loaded = 0;
+
+	constructor(basePath, count) {
+		this.basePath = basePath;
+		this.count = count;
+	}
+
+	load() {
+		for (let index = 1; index <= this.count; index++) {
+			const image = new Image();
+			image.src = `${this.basePath}/${String(index).padStart(3, '0')}.jpg`;
+			this.images.push(image);
+		}
+	}
+
+	frameAt(progress) {
+		const index = Math.round(progress * (this.count - 1));
+		return this.images[Math.max(0, Math.min(index, this.count - 1))];
+	}
+}
+
 class Portfolio {
 	reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 	finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
@@ -50,6 +73,9 @@ class Portfolio {
 	};
 	parallaxTicking = false;
 	marqueeFrame = 0;
+	mtStarted = false;
+	mtScrubs = [];
+	mtTicking = false;
 
 	employmentStart = new Date(2024, 1, 1);
 	employmentQuit = null;
@@ -65,6 +91,7 @@ class Portfolio {
 		this.setupTenure();
 		this.setupParallax();
 		this.setupMarquee();
+		this.setupMinato();
 
 		if (this.finePointer && !this.reduceMotion) {
 			this.setupPointerEffects();
@@ -718,6 +745,218 @@ class Portfolio {
 			},
 			{ passive: true },
 		);
+	}
+
+	setupMinato() {
+		const start = () => {
+			if (document.documentElement.getAttribute('data-active-theme') !== 'minato' || this.mtStarted) {
+				return false;
+			}
+			this.mtStarted = true;
+			this.initMinato();
+			return true;
+		};
+
+		if (start()) {
+			return;
+		}
+
+		const observer = new MutationObserver(() => {
+			if (start()) {
+				observer.disconnect();
+			}
+		});
+		observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-active-theme'] });
+	}
+
+	initMinato() {
+		this.mtScrubs = Array.from(document.querySelectorAll('.mt-act')).map((section) => {
+			const canvas = section.querySelector('.mt-canvas');
+			const sequence = new FrameSequence(section.getAttribute('data-frames'), Number(section.getAttribute('data-count')));
+			sequence.load();
+			sequence.images[0].onload = () => {
+				this.mtRender();
+			};
+			return {
+				section,
+				canvas,
+				context: canvas.getContext('2d'),
+				sequence,
+				phases: Array.from(section.querySelectorAll('.mt-phase')),
+				titleblock: section.querySelector('.mt-titleblock'),
+				isRas: section.classList.contains('mt-ras'),
+			};
+		});
+
+		const resize = () => {
+			this.mtScrubs.forEach(({ canvas }) => {
+				const ratio = Math.min(devicePixelRatio || 1, 2);
+				canvas.width = canvas.clientWidth * ratio;
+				canvas.height = canvas.clientHeight * ratio;
+				canvas.getContext('2d').setTransform(ratio, 0, 0, ratio, 0, 0);
+			});
+			this.mtRender();
+		};
+
+		addEventListener('resize', resize, { passive: true });
+		addEventListener('load', resize);
+		resize();
+
+		if (this.reduceMotion) {
+			return;
+		}
+
+		addEventListener(
+			'scroll',
+			() => {
+				if (this.mtTicking) {
+					return;
+				}
+				this.mtTicking = true;
+				requestAnimationFrame(() => {
+					this.mtRender();
+					this.mtTicking = false;
+				});
+			},
+			{ passive: true },
+		);
+
+		this.setupMinatoRas();
+		this.setupMinatoLegacy();
+
+		if (this.finePointer) {
+			this.setupMinatoCursor();
+		}
+	}
+
+	mtRender() {
+		this.mtScrubs.forEach((scrub) => {
+			const rect = scrub.section.getBoundingClientRect();
+			if (rect.bottom < 0 || rect.top > innerHeight) {
+				return;
+			}
+
+			if (scrub.isRas) {
+				if (!scrub.rasDrawn) {
+					scrub.rasDrawn = true;
+					this.mtDrawFrame(scrub, 0.5);
+				}
+				return;
+			}
+
+			const total = rect.height - innerHeight;
+			const progress = Math.max(0, Math.min(total > 0 ? -rect.top / total : 0.5, 1));
+			this.mtDrawFrame(scrub, progress);
+			this.mtUpdatePhases(scrub, progress);
+		});
+	}
+
+	mtDrawFrame(scrub, progress) {
+		const image = scrub.sequence.frameAt(this.reduceMotion ? 0.5 : progress);
+		if (!image?.complete || !image.naturalWidth) {
+			return;
+		}
+
+		const { canvas, context } = scrub;
+		const width = canvas.clientWidth;
+		const height = canvas.clientHeight;
+		const scale = Math.max(width / image.naturalWidth, height / image.naturalHeight);
+		const drawWidth = image.naturalWidth * scale;
+		const drawHeight = image.naturalHeight * scale;
+
+		context.clearRect(0, 0, width, height);
+		context.drawImage(image, (width - drawWidth) / 2, (height - drawHeight) / 2, drawWidth, drawHeight);
+	}
+
+	mtUpdatePhases(scrub, progress) {
+		if (scrub.titleblock) {
+			scrub.titleblock.style.opacity = `${Math.max(0, 1 - progress / 0.14)}`;
+		}
+
+		const bands = [
+			[0.16, 0.36],
+			[0.36, 0.58],
+			[0.58, 0.8],
+			[0.8, 1.01],
+		];
+		scrub.phases.forEach((phase, index) => {
+			const [bandStart, bandEnd] = bands[index];
+			const inside = progress >= bandStart && progress < bandEnd;
+			const edge = Math.min(Math.abs(progress - bandStart), Math.abs(progress - bandEnd));
+			const strength = inside ? Math.min(edge / 0.05, 1) : 0;
+			phase.style.opacity = `${strength}`;
+			phase.style.transform = `translateY(${(1 - strength) * 24}px)`;
+		});
+	}
+
+	setupMinatoRas() {
+		const scrub = this.mtScrubs.find((entry) => {
+			return entry.isRas;
+		});
+		if (!scrub) {
+			return;
+		}
+
+		const manual = { progress: 0.5, until: 0 };
+
+		if (this.finePointer) {
+			scrub.section.addEventListener(
+				'pointermove',
+				(event) => {
+					manual.progress = event.clientX / innerWidth;
+					manual.until = performance.now() + 2500;
+				},
+				{ passive: true },
+			);
+		}
+
+		const loop = (timestamp) => {
+			const rect = scrub.section.getBoundingClientRect();
+			if (rect.bottom > 0 && rect.top < innerHeight) {
+				const auto = 0.5 + 0.45 * Math.sin(timestamp / 2400);
+				const progress = timestamp < manual.until ? manual.progress : auto;
+				this.mtDrawFrame(scrub, Math.max(0, Math.min(progress, 1)));
+			}
+			requestAnimationFrame(loop);
+		};
+
+		requestAnimationFrame(loop);
+	}
+
+	setupMinatoLegacy() {
+		const reveal = document.getElementById('mtLegacyReveal');
+		const section = document.getElementById('contact');
+		if (!reveal || !section || !this.finePointer) {
+			return;
+		}
+
+		section.addEventListener(
+			'pointermove',
+			(event) => {
+				const rect = section.getBoundingClientRect();
+				reveal.style.setProperty('--mx', `${((event.clientX - rect.left) / rect.width) * 100}%`);
+				reveal.style.setProperty('--my', `${((event.clientY - rect.top) / rect.height) * 100}%`);
+			},
+			{ passive: true },
+		);
+	}
+
+	setupMinatoCursor() {
+		const cursor = document.getElementById('mtCursor');
+
+		addEventListener('pointermove', (event) => {
+			cursor.style.opacity = '1';
+			cursor.style.transform = `translate(${event.clientX}px, ${event.clientY}px)`;
+		});
+
+		document.querySelectorAll('a, button').forEach((element) => {
+			element.addEventListener('pointerenter', () => {
+				cursor.classList.add('hot');
+			});
+			element.addEventListener('pointerleave', () => {
+				cursor.classList.remove('hot');
+			});
+		});
 	}
 }
 

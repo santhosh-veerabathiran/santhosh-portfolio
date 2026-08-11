@@ -33,6 +33,10 @@ class Theme {
 		this.setVars(theme.palette);
 		this.setVars(theme.fonts);
 
+		if (theme.fontImport) {
+			this.loadFont(theme.fontImport);
+		}
+
 		const background = theme.background ?? {};
 		if (background.pattern) {
 			this.root.setAttribute('data-pattern', background.pattern);
@@ -53,6 +57,23 @@ class Theme {
 		this.root.setAttribute('data-orbs', background.orbs === false ? 'off' : 'on');
 		this.root.setAttribute('data-aurora', background.aurora === true ? 'on' : 'off');
 		this.root.setAttribute('data-active-theme', this.name);
+	}
+
+	loadFont(href) {
+		['https://fonts.googleapis.com', 'https://fonts.gstatic.com'].forEach((origin) => {
+			const preconnect = document.createElement('link');
+			preconnect.rel = 'preconnect';
+			preconnect.href = origin;
+			if (origin.includes('gstatic')) {
+				preconnect.crossOrigin = 'anonymous';
+			}
+			document.head.appendChild(preconnect);
+		});
+
+		const stylesheet = document.createElement('link');
+		stylesheet.rel = 'stylesheet';
+		stylesheet.href = href;
+		document.head.appendChild(stylesheet);
 	}
 
 	setVars(group) {
