@@ -25,7 +25,15 @@ class Portfolio {
 	reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 	finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-	words = ['payment engines.', 'settlement systems.', 'KYC & AML tooling.', 'search infrastructure.', 'production AI features.'];
+	words = [
+		'payment engines.',
+		'settlement systems.',
+		'KYC & AML tooling.',
+		'payment-integrity sweeps.',
+		'logistics integrations.',
+		'search infrastructure.',
+		'production AI tooling.',
+	];
 	typedElement;
 	wordIndex = 0;
 	charIndex = 0;

@@ -509,9 +509,10 @@
 
 		<section aria-label="Summary">
 			<p class="lead">
-				Full-stack engineer building payments and acquiring infrastructure — <strong>1,150+ commits across ~30 NestJS/TypeScript microservices and the Angular operations console</strong> of a Swedish payments platform. Built an event-driven
-				settlement engine and an AML transaction-monitoring rule engine, authored a <strong>from-scratch typed Creditsafe credit-data SDK</strong>, and owned the platform's global search service. Shipped two production AI features and rebuilt
-				the ops console's <strong>list, ticketing and alert-review</strong> experiences in Angular (Signals).
+				Full-stack engineer building payments and acquiring infrastructure — <strong>1,550+ commits across 80+ NestJS/TypeScript microservices and the Angular operations console</strong> of a Swedish payments platform. Built an event-driven
+				settlement engine, an hourly payment-integrity sweeper and an AML transaction-monitoring rule engine, authored a <strong>from-scratch typed Creditsafe credit-data SDK</strong>, and owned the platform's global search service. Hardened
+				the platform's shared AI layer — retries, quota gating and usage tracking behind every model call — and rebuilt the ops console's <strong>list, ticketing and alert-review</strong>
+				experiences in Angular (Signals).
 			</p>
 		</section>
 
@@ -523,7 +524,7 @@
 
 			<div class="job-head">
 				<p class="job-title"><span class="company">Surfboard</span> · Chennai, India</p>
-				<span class="job-when"><strong>Feb 2024 – Present</strong> · 2 yrs 6 mos</span>
+				<span class="job-when"><strong>Feb 2024 – Present</strong> · 2 yrs 7 mos</span>
 			</div>
 			<div class="role-sub">
 				<span class="rt">Software Engineer</span>
@@ -539,8 +540,9 @@
 				<h4>Payments, Settlements &amp; Billing</h4>
 				<ul class="bullets">
 					<li>Built an <strong>event-driven settlement engine</strong> computing merchant payouts from acquirer files — fees, commissions, VAT, adjustments and chargebacks — across four run cadences from daily to partner-level.</li>
-					<li>Generated <strong>bank payout files</strong>, including a DNB (NOK) ISO-20022-style XML with KID/OCR creditor references and BBAN transfers, plus PDF/CSV settlement reports.</li>
+					<li>Generated <strong>bank payout files</strong>, including a DNB (NOK) ISO-20022-style XML with KID/OCR creditor references and BBAN transfers.</li>
 					<li>Designed <strong>partner/merchant billing-plan management</strong> with currency-specific, per-payment-method fees, wiring fee calculation into the payment-completion path.</li>
+					<li>Built an hourly <strong>payment-integrity sweeper</strong> — cross-checks over payment and settlement data with dry-run mode, typed error codes and mailed findings reports.</li>
 					<li>Improved a Bun/Elysia <strong>payment-isolation service</strong> — moved the Epassi integration to secure <strong>per-merchant credentials</strong> and fixed a payment-method caching bug.</li>
 				</ul>
 			</div>
@@ -549,8 +551,8 @@
 				<h4>KYC, Credit Data &amp; AML</h4>
 				<ul class="bullets">
 					<li>
-						Designed and built a <strong>from-scratch, typed Creditsafe credit-data SDK</strong> — a fluent client + facade over three transports (Connect REST/JWT, getData OAuth2, SOAP webservices) with per-transport auth, a memory/Redis
-						token store, XML→JSON parsing, a typed error catalog, request-scoped logging with secret redaction, and raw-response persistence to a unified table — then migrated every legacy consumer and stored response onto it.
+						Designed and built a <strong>from-scratch, typed Creditsafe credit-data SDK</strong> — a fluent client + facade over three transports (REST/JWT, OAuth2, SOAP) with per-transport auth, a memory/Redis token store, XML→JSON
+						parsing, a typed error catalog, secret-redacting request logs and raw-response persistence to a unified table — then migrated every legacy consumer and stored response onto it.
 					</li>
 					<li>
 						Implemented the <strong>AML transaction-monitoring rule engine</strong> — MCC/merchant-level overrides, currency-specific config, and timezone-aware 1-min/10-min/daily evaluation cadences — with bulk alert management and audit
@@ -572,13 +574,11 @@
 						Slack-alerted maintenance crons.
 					</li>
 					<li>Built <strong>merchant/partner analytics over ClickHouse</strong> — a top-merchants-by-currency API with two-level pagination — plus a transactions → analytics migration pipeline feeding the reporting layer.</li>
+					<li>Hardened the platform's shared <strong>AI toolkit</strong> — automatic retries, a quota gate and centralized usage tracking (Drizzle-managed store) behind every Gemini call across services.</li>
+					<li>Delivered integrations spanning <strong>six payment providers</strong> — two-phase Fiserv onboarding, BankAxept and AMEX enablement, Klarna/Fiserv SFTP settlement-file ingestion, and Worldline/Northmill reconciliation.</li>
 					<li>
-						Delivered integrations spanning <strong>six payment providers</strong> — two-phase Fiserv onboarding (polling cron, GCS transfer), BankAxept and AMEX enablement, Klarna/Fiserv SFTP settlement-file ingestion, and
-						Worldline/Northmill reconciliation.
-					</li>
-					<li>
-						Built an <strong>autonomous merchant-onboarding browser agent</strong> (Claude Sonnet + Browserbase Stagehand) that creates sites and configures activities when a partner form flow breaks, and integrated nShift returns
-						shipping behind a provider factory with fallback and RFC-7231-aware retry.
+						Built an <strong>autonomous merchant-onboarding browser agent</strong> (Claude Sonnet + Browserbase Stagehand) that creates sites and configures activities when a partner form flow breaks, and integrated
+						<strong>nShift shipping and returns</strong> behind a provider factory with fallback, RFC-7231-aware retry and cross-border APCR routing.
 					</li>
 				</ul>
 			</div>
@@ -590,8 +590,8 @@
 						Built a <strong>support ticketing system</strong> — a shared inbox with assignee filters and unassigned counts, group-by partner/merchant, an @-mention picker, and ticket tabs embedded on merchant and partner detail views.
 					</li>
 					<li>
-						<strong>Rebuilt the console's list pages with a new UI</strong> — filter panels, multi-sort and status cards across merchant, partner, KYC and onboarding lists, unified on a reusable list-shell and a shared date-range filter
-						adopted across <strong>15 pages</strong>.
+						<strong>Rebuilt the console's list pages with a new UI</strong> — filter panels, multi-sort and status cards across merchant, partner, KYC and onboarding lists, unified on a reusable list-shell across
+						<strong>15 pages</strong>.
 					</li>
 					<li>Built the <strong>transaction-monitoring AI alert-review UI</strong> — confidence-scored dispositions with role-gated apply and hover previews — plus a human-readable rule-threshold editor with live rule-name templating.</li>
 					<li>Built the <strong>activity feed</strong> and improved the console's stability — fixing memory leaks, timer cleanup and offline data-sync reliability.</li>
@@ -651,9 +651,7 @@
 
 				<dt>AI</dt>
 				<dd>
-					<div class="chips">
-						<span class="chip">Google Gemini</span><span class="chip">Claude (Sonnet)</span><span class="chip">Structured output</span><span class="chip">Search grounding</span><span class="chip">Stagehand agent</span>
-					</div>
+					<div class="chips"><span class="chip">Google Gemini</span><span class="chip">Claude</span><span class="chip">Structured output</span><span class="chip">Search grounding</span><span class="chip">Stagehand agent</span></div>
 				</dd>
 
 				<dt>Integrations</dt>
@@ -667,7 +665,7 @@
 				<dt>Practices</dt>
 				<dd>
 					<div class="chips">
-						<span class="chip">SDK / client design</span><span class="chip">Jest / Supertest</span><span class="chip">Cypress</span><span class="chip">Schema validation (TypeBox/Zod)</span><span class="chip">Retry &amp; backoff</span
+						<span class="chip">SDK / client design</span><span class="chip">Jest / Supertest</span><span class="chip">Cypress</span><span class="chip">Schema validation</span><span class="chip">Retry &amp; backoff</span
 						><span class="chip">Observability</span>
 					</div>
 				</dd>
