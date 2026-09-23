@@ -1,6 +1,6 @@
 <div align="center">
 
-![Portfolio preview](assets/images/og-image.png)
+![Portfolio preview](public/assets/images/og-image.png)
 
 # 🌊 Santhosh Veerabathiran — Portfolio
 
@@ -8,16 +8,16 @@
 
 [![Live Site](https://img.shields.io/badge/Live-portfolio.santhosh--veerabathiran.com-2dd4bf?style=for-the-badge&logo=cloudflarepages&logoColor=white)](https://portfolio.santhosh-veerabathiran.com/)
 &nbsp;
-[![Résumé](https://img.shields.io/badge/R%C3%A9sum%C3%A9-PDF-0f766e?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](assets/resumes/santhosh-resume.pdf)
+[![Résumé](https://img.shields.io/badge/R%C3%A9sum%C3%A9-PDF-0f766e?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](public/assets/resumes/santhosh-resume.pdf)
 
 <br />
 
-![HTML5](https://img.shields.io/badge/HTML5-0b1416?style=flat-square&logo=html5&logoColor=E34F26)
+![React](https://img.shields.io/badge/React_19-0b1416?style=flat-square&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-0b1416?style=flat-square&logo=typescript&logoColor=3178C6)
+![Vite](https://img.shields.io/badge/Vite-0b1416?style=flat-square&logo=vite&logoColor=646CFF)
 ![CSS3](https://img.shields.io/badge/CSS3-0b1416?style=flat-square&logo=css3&logoColor=1572B6)
-![JavaScript](https://img.shields.io/badge/JavaScript-0b1416?style=flat-square&logo=javascript&logoColor=F7DF1E)
 ![Canvas](https://img.shields.io/badge/Canvas-0b1416?style=flat-square&logo=html5&logoColor=2dd4bf)
 ![Prettier](https://img.shields.io/badge/Prettier-0b1416?style=flat-square&logo=prettier&logoColor=F7B93E)
-![No build step](https://img.shields.io/badge/Build-none-2dd4bf?style=flat-square)
 
 </div>
 
@@ -25,67 +25,70 @@
 
 ## ✨ Overview
 
-A hand-built, single-page developer portfolio — dark theme, teal accent, and a fully custom set of
-animations with **no libraries and no build step**. Just open `index.html`.
+A multi-template developer portfolio built with **React 19 + Vite + TypeScript**. Every template renders
+the same typed content, so the information lives in exactly one place — the designs live in many.
 
 > 🔗 **Live:** https://portfolio.santhosh-veerabathiran.com/
 
+## 🧩 Templates & skins
+
+Two different concepts, cleanly separated:
+
+- **Templates** are whole documents with their own URL, Vite entry and static head (own social-share
+  preview). The **classic** template lives at the root `/`; **[minato](src/templates/minato/README.md)**
+  lives at `/minato/`. A future completely-different template is a new shell + entry + layout, and costs
+  the other templates nothing.
+- **Skins** are design variants of the classic template only, selected with `?theme=<id>` on the root —
+  random when absent, unknown values fall back to random. A skin is one JSON of design tokens +
+  background/effect config; adding one is a JSON file in `src/templates/classic/skins/` registered in
+  `src/templates/classic/skin.registry.ts`.
+
+| Skin    | Feel                            | Try               |
+| ------- | ------------------------------- | ----------------- |
+| Marine  | teal · particle network         | `/?theme=marine`  |
+| Sunset  | warm orange · aurora            | `/?theme=sunset`  |
+| Violet  | purple · starfield              | `/?theme=violet`  |
+| Mono    | grayscale serif · contour waves | `/?theme=mono`    |
+| Crimson | deep red · falling petals       | `/?theme=crimson` |
+| Ember   | gold serif · rising embers      | `/?theme=ember`   |
+
 ## 🎬 Features
 
-- 🌌 **Interactive particle-network canvas** in the hero that reacts to your cursor
-- ⌨️ **Typewriter** headline cycling through focus areas + a staggered **letter reveal** on the name
-- 🔢 **Count-up stats** that animate when scrolled into view
-- 🪄 **3D-tilt cards** with a cursor-tracking glow, a **magnetic** CTA, and a page **spotlight**
-- 🎞️ **Scroll-reveal** sections, an infinite **tech marquee**, and a scroll-progress bar
-- 📄 One-click **résumé** download
+- 🌌 **Canvas hero** per skin — particle network, starfield, embers, petals or contour waves, all cursor-reactive
+- ⌨️ **Typewriter** headline + staggered **letter reveal**, count-up stats, live tenure
+- 🪄 **3D-tilt cards** with cursor-tracking glow, **magnetic** CTAs, page **spotlight**
+- 🎞️ **Scroll-reveal** sections, seamless **tech marquee**, scroll-progress bar
+- 🎥 **Minato template**: scroll-scrubbed frame sequences, pointer-tracked sphere, sweep-to-reveal contact
+- 🧠 Dynamic per-template **head** — title, description, JSON-LD, and a favicon tinted by the active skin
 - ♿ Fully **`prefers-reduced-motion`** aware and mobile-responsive
-- 🔗 **Open Graph / Twitter** card for rich link previews
 
 ## 🗂️ Structure
 
 ```text
 santhosh-portfolio/
-├── index.html              # markup
-├── assets/
-│   ├── css/style.css       # all styles
-│   ├── js/main.js          # all interactions (class-based, vanilla JS)
-│   ├── js/theme.js         # ?theme= loader (class-based, vanilla JS)
-│   ├── themes/*.json       # theme definitions (colors, fonts, background)
-│   ├── images/og-image.png # social-preview card (1200×630)
-│   └── resumes/santhosh-resume.pdf
-├── .prettierrc             # formatter config
-└── package.json            # format scripts
+├── index.html                     # classic document shell (crawler defaults)
+├── minato/index.html              # minato document shell
+├── public/
+│   ├── assets/classic/            # classic skin art (crimson.svg, ember.svg)
+│   ├── assets/minato/             # minato frames + art plates
+│   ├── assets/images/             # og-image
+│   └── assets/resumes/            # résumé (html + pdf)
+└── src/
+    ├── content/                   # single source of truth: profile, work, projects, skills, seo
+    ├── lib/                       # shared runtime + hooks (skins, head, motion, observers)
+    └── templates/
+        ├── classic/               # default template (/) — layout, sections, effects, skins/
+        └── minato/                # cinematic template (/minato/) — see its README
 ```
 
-## 🚀 Getting Started
+## 🚀 Development
 
 ```bash
-# open directly, or serve the folder:
-python3 -m http.server 8000
-# → http://localhost:8000
+npm install
+npm run dev       # http://localhost:5173 (and /minato/)
+npm run build     # type-check + production build into dist/
+npm run preview   # serve the production build
 ```
-
-## 🎨 Themes
-
-Themes are JSON files in **`assets/themes/`**, selected with a `?theme=<name>` query — no UI switcher.
-Each file drives colours, fonts, background pattern, and the animated background (canvas mode, aurora,
-orbs) plus its motion (drift speed and cursor behaviour: `link` · `repel` · `attract` · `none`).
-
-<table>
-  <tr>
-    <td align="center"><b>Marine</b> — default · network + orbs<br /><sub><code>?theme=marine</code></sub></td>
-    <td align="center"><b>Violet</b> — starfield + aurora<br /><sub><code>?theme=violet</code></sub></td>
-  </tr>
-  <tr>
-    <td><img src="assets/images/og-image.png" alt="Marine theme" /></td>
-    <td><img src="assets/images/og-image-violet.png" alt="Violet theme" /></td>
-  </tr>
-</table>
-
-> Themes load over `fetch`, so they need the site served over HTTP (`file://` keeps the default).
-
-Design tokens also live at the top of **`assets/css/style.css`** (`--accent`, `--bg`, `--ink`, …).
-Content sits in the section markup in **`index.html`**.
 
 ## 🧹 Format
 
@@ -98,8 +101,8 @@ npm run format:check   # verify
 
 ## 🌐 Deploy
 
-Static site — host the folder anywhere. This one runs on **Cloudflare Pages**, Git-connected to
-`main` and auto-deploying on every push. Security headers ship via `_headers`.
+**Cloudflare Pages**, Git-connected to `main` — build command `npm run build`, output directory `dist`.
+Security headers ship via `public/_headers`.
 
 ## 📬 Contact
 

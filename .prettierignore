@@ -1,2 +1,4 @@
 node_modules
 assets/resumes/santhosh-resume.pdf
+dist
+public/assets
