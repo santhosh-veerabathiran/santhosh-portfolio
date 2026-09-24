@@ -72,7 +72,8 @@ santhosh-portfolio/
 │   ├── assets/classic/            # classic skin art (crimson.svg, ember.svg)
 │   ├── assets/minato/             # minato frames + art plates
 │   ├── assets/images/             # og-image
-│   └── assets/resumes/            # résumé (html + pdf)
+│   └── assets/resumes/            # résumé (pdf)
+├── resumes/                       # résumé source (html, not deployed)
 └── src/
     ├── content/                   # single source of truth: profile, work, projects, skills, seo
     ├── lib/                       # shared runtime + hooks (skins, head, motion, observers)
